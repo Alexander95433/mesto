@@ -1,176 +1,35 @@
 @import url(../vendor/normalize.css);
 @import url(../vendor/fonts/font-Inter.css);
 
-/*body*/
-
-.body {
-    max-width: 1280px;
-    min-width: 300px;
-    margin: 0 auto 0;
-    font-family: 'Inter', Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    background-color: #000000;
-    color: white;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-    -moz-text-size-adjust: 100%;
-    text-rendering: optimizeLegibility;
-}
-
+/*page*/
+@import url(../blocks/page/page.css);
 /*header*/
-.header {
-    width: 69%;
-    margin: auto;
-    border-bottom: solid 1px #545454;
-}
-
-.header__logo {
-    Width: 142px;
-    Height: 33px;
-    margin: 45px 0 41px;
-}
-
+@import url(../blocks/header/header.css);
+@import url(../blocks/header/__logo/header__logo.css);
 /*main*/
-.main {
-    width: 69%;
-    margin: auto;
-}
+@import url(../blocks/main/main.css);
 
 /*profile*/
-.profile {
-    width: 100%;
-    margin: 40px auto 0;
-    display: flex;
-}
-
-.profile__wrapper {
-    width: 100%;
-    display: flex;
-    align-items: center;
-}
-
-.profile__avatar {
-    width: 127.5px;
-    height: 127.5px;
-    border-radius: 50%;
-}
-
-.profile__content {
-    display: flex;
-    align-items: baseline;
-    margin-left: 30px;
-}
-
-.profile__info {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.profile__info-name {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 42px;
-    line-height: 48px;
-    padding-bottom: 16px;
-}
-
-.profile__info-description {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 22px;
-}
-
-.profile__info-button {
-    background-color: #000000;
-    width: 27px;
-    height: 27px;
-    padding: 0;
-    margin-left: 18px;
-
-}
-
-.profile__info-button-picture {
-    width: 24px;
-    height: 24px;
-
-}
-
-.profile__info-picture-cross {
-    width: 150px;
-    height: 50px;
-}
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__wrapper/profile__wrapper.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__content/profile__content.css);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__info-name/profile__info-name.css);
+@import url(../blocks/profile/__info-description/profile__info-description.css);
+@import url(../blocks/profile/__info-button/profile__info-button.css);
+@import url(../blocks/profile/__info-button-picture/profile__info-button-picture.css);
+@import url(../blocks/profile/__info-picture-cross/profile__info-picture-cross.css);
 
 /*element*/
-.element {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(206px, min-content));
-    gap: 17px 20px;
-    margin-top: 51px;
-}
-
-.element__card {
-    max-width: 282px;
-    min-height: 261px;
-    background-color: white;
-    border-radius: 4%;
-    overflow: hidden;
-}
-
-.element__picture {
-    max-width: 282px;
-    mix-blend-mode: multiply;
-}
-
-.element__content {
-    color: #000000;
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-    padding: 25px 21px 31px;
-}
-
-.element__content-title {
-    font-style: normal;
-    font-weight: 900;
-    font-size: 24px;
-    line-height: 29px;
-    margin: 0;
-    white-space: pre;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.element__content-dutton-like {
-    padding: 0;
-    width: 22px;
-    height: 22px;
-    background-color: white;
-    border: aliceblue;
-}
-
-.element__content-dutton-like-picture {
-    width: 22px;
-    height: 22px;
-}
-
+@import url(../blocks/element/element.css);
+@import url(../blocks/element/__card/element__card.css);
+@import url(../blocks/element/__picture/element__picture.css);
+@import url(../blocks/element/__content/element__content.css);
+@import url(../blocks/element/__content-title/element__content-title.css);
+@import url(../blocks/element/__content-button-like/element__content-button-like.css);
+@import url(../blocks/element/__content-button-like-picture/element__content-button-like-picture.css);
 
 /*footer*/
-.footer {
-    width: 69%;
-    margin: 66px auto 60px;
-}
-
-.footer__signature {
-    color: #545454;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 22px;
-    margin: 0;
-}
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__signature/footer__signature.css);
