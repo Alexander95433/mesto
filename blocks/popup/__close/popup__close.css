@@ -4,4 +4,11 @@
     left: 438px;
     width: 32px;
     height: 32px;
+    transition: opacity 0.2s linear;
+}
+
+.popup__close:hover {
+    opacity: .7;
+    transition:  0.3s linear;
+
 }

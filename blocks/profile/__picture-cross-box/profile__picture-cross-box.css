@@ -6,6 +6,13 @@
     align-items: center;
     justify-content: center;
     margin-left: 40px;
+    transition: opacity .3s linear;
+}
+
+.profile__picture-cross-box:hover {
+    opacity: .7;
+    transition: .3s linear;
+
 }
 
 @media screen and (max-width:870px) {

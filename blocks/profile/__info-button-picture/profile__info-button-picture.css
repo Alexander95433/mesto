@@ -3,10 +3,12 @@
     height: 24px;
 }
 
+
+
 @media screen and (max-width:320px) {
     .profile__info-button-picture {
         width: 18px;
         height: 18px;
     }
-    
+
 }
