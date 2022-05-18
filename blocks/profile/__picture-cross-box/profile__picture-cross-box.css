@@ -1,0 +1,29 @@
+.profile__picture-cross-box {
+    width: 150px;
+    height: 50px;
+    border: solid 1px white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 40px;
+}
+
+@media screen and (max-width:870px) {
+    .profile__picture-cross-box {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width:650px) {
+    .profile__picture-cross-box {
+        margin-top: 30px;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .profile__picture-cross-box {
+        width: 282px;
+        height: 50px;
+        margin: 36px auto 0;
+    }
+}
