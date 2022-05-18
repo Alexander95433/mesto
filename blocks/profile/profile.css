@@ -2,4 +2,16 @@
     width: 100%;
     margin: 40px auto 0;
     display: flex;
+    align-items: center;
+}
+@media screen and (max-width:870px) {
+    .profile {
+        flex-direction: column;
+    }
+}
+@media screen and (max-width:320px) {
+    .profile {
+        flex-direction: column;
+    }
+    
 }

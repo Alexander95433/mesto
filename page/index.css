@@ -19,7 +19,7 @@
 @import url(../blocks/profile/__info-description/profile__info-description.css);
 @import url(../blocks/profile/__info-button/profile__info-button.css);
 @import url(../blocks/profile/__info-button-picture/profile__info-button-picture.css);
-@import url(../blocks/profile/__info-picture-cross/profile__info-picture-cross.css);
+@import url(../blocks/profile/picture-cross/profile__picture-cross.css);
 
 /*element*/
 @import url(../blocks/element/element.css);
@@ -33,3 +33,26 @@
 /*footer*/
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__signature/footer__signature.css);
+
+.profile__picture-cross-box {
+    width: 150px;
+    height: 50px;
+    border: solid 1px white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 40px;
+}
+@media screen and (max-width:870px) {
+    .profile__picture-cross-box {
+        margin-left: 99px;
+    }
+}
+
+@media screen and (max-width:320px) {
+    .profile__picture-cross-box {
+        width: 282px;
+        height: 50px;
+        margin: 36px auto 0;
+    }
+}

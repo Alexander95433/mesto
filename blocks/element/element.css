@@ -5,3 +5,16 @@
     gap: 17px 20px;
     margin-top: 51px;
 }
+
+@media screen and (max-width:650px) {
+    .element {
+        grid-template-columns: repeat(1,1fr);
+    }
+}
+
+@media screen and (max-width:320px) {
+    .element {
+        margin-top: 39px;
+        grid-template-columns:repeat(1, 1fr);
+    }
+}

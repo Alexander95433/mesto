@@ -5,3 +5,12 @@
     padding: 0;
     margin-left: 18px;
 }
+
+@media screen and (max-width:320px) {
+    .profile__info-button {
+        width: 20px;
+        height: 20px;
+        margin-left: 10px;
+    }
+    
+}
