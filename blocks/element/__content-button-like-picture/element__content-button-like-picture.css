@@ -3,7 +3,9 @@
     height: 22px;
     transition: opacity .3s linear;
 }
-    .element__content-button-like-picture:hover {
-        opacity: .5;
-        transition: .3s linear;
-    }
+
+
+.element__content-button-like-picture:hover {
+    opacity: .5;
+    transition: .3s linear;
+}
