@@ -34,3 +34,14 @@
 /*footer*/
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__signature/footer__signature.css);
+
+/*popup*/
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__window/popup__window.css);
+@import url(../blocks/popup/__close/popup__close.css);
+@import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/__form/popup__form.css);
+@import url(../blocks/popup/__form-name/popup__form-name.css);
+@import url(../blocks/popup/__form-description/popup__form-description.css);
+@import url(../blocks/popup/__form-button/popup__form-button.css);
+@import url(../blocks/popup/popup_visible.css);

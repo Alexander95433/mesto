@@ -1,0 +1,18 @@
+.popup__form-button {
+    width: 98%;
+    height: 50px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    margin: 48px 0 0;
+    background-color: black;
+    color: #FFFFFF;
+}
+
+@media screen and (max-width:650px) {
+    .popup__form-name {
+        margin: 45px 0 0;
+    }
+}

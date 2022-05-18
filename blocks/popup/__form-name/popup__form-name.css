@@ -1,0 +1,15 @@
+.popup__form-name {
+    width: 98%;
+    height: 27px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    margin: 54px 0 0;
+}
+
+@media screen and (max-width:650px) {
+    .popup__form-name {
+        margin: 75px 0 0;
+    }
+}
