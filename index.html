@@ -20,8 +20,8 @@
                 <img class="profile__avatar" src="./image/avatar_profile.jpg" alt="Фото профиля">
                 <div class="profile__content">
                     <ul class="profile__info">
-                        <li class="profile__info-name" type="text">Жак-Ив Кусто</li>
-                        <li class="profile__info-description" type="">Исследователь океана</li>
+                        <li class="profile__info-name" >Жак-Ив Кусто</li>
+                        <li class="profile__info-description" >Исследователь океана</li>
                     </ul>
                     <button class="profile__info-button">
                         <img class="profile__info-button-picture" src="./image/Button_profile.svg" alt="">
@@ -38,9 +38,9 @@
                 <img class="element__picture" src="./image/1.jpg" alt="Карачаевск">
                 <div class="element__content">
                     <h2 class="element__content-title">Карачаевск</h2>
-                    <button class="element__content-button-like">
-                        <img class="element__content-button-like-picture "
-                            src="./image/like/like_disabled.svg" alt="Нравиться">
+                    <button class="element__content-button-like" id="ff">
+                        <img class="element__content-button-like-picture" src="./image/like/like_disabled.svg"
+                            alt="Нравиться">
                     </button>
                 </div>
             </article>
@@ -48,7 +48,7 @@
                 <img class="element__picture" src="./image/2.jpg" alt="Гора Эльбрус">
                 <div class="element__content">
                     <h2 class="element__content-title">Гора Эльбрус</h2>
-                    <button class="element__content-button-like">
+                    <button class="element__content-button-like" id="aa">
                         <img class="element__content-button-like-picture " src="./image/like/like_disabled.svg"
                             alt="Нравиться">
                     </button>
@@ -58,7 +58,7 @@
                 <img class="element__picture" src="./image/3.jpg" alt="Домбай">
                 <div class="element__content">
                     <h2 class="element__content-title">Домбай</h2>
-                    <button class="element__content-button-like">
+                    <button class="element__content-button-like ">
                         <img class="element__content-button-like-picture " src="./image/like/like_disabled.svg"
                             alt="Нравиться">
                     </button>
@@ -99,13 +99,13 @@
 
         <div class="popup ">
             <div class="popup__window">
-                <img class="popup__close" src="./image/Close Icon popup.png" alt="Закрыть Х">
+                <img class="popup__close" src="./image/Close_Icon_popup.png" alt="Закрыть Х">
                 <h1 class="popup__title">Редактировать профиль</h1>
-                <form class="popup__form" action="">
-                    <input class="popup__form-name" type="text" name="form-name" id="" placeholder="Жак-Ив Кусто">
-                    <input class="popup__form-description" type="text" name="form-description" id=""
-                        placeholder="Исследователь океана">
-                    <button class="popup__form-button">Сохранить</button>
+                <form class="popup__form">
+                    <input class="popup__form-name" type="text" name="form-name" value="Жак-Ив Кусто">
+                    <input class="popup__form-description" type="text" name="form-description"
+                        value="Исследователь океана">
+                    <button class="popup__form-button" type='button'>Сохранить</button>
                 </form>
             </div>
         </div>
@@ -116,7 +116,7 @@
     <footer class="footer">
         <p class="footer__signature">© 2020 Mesto Russia</p>
     </footer>
-
+    <script src="./scripts/index.js"></script>
 </body>
 
 </html>
