@@ -14,6 +14,7 @@ buttonPopupOn.addEventListener('click', openPopup)
 function closePopup() {
 
     popup.classList.remove('popup_visible')
+    //Синхронизирует поля формы и профиля в случае если из popup вышли через popup__close//
     formName.value = profileInfoName.textContent
     formDescription.value = profileInfoDescription.textContent
 
