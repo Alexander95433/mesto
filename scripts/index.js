@@ -22,21 +22,22 @@ function openPopup() {
     popup.classList.add('popup_visible')
 }
 
-// закрытие popup  и синхронизировать value с содержанием строк popup// 
+// закрывает popup// 
 function closePopup() {
     popup.classList.remove('popup_visible')
 }
 
-//Не даёт перезаписать value если длинна строки меньше 0// 
-function buttonActive() {
+function formSubmitHandler(evt) {
+    evt.preventDefault();
     profileInfoName.textContent = formName.value
     profileInfoDescription.textContent = formDescription.value
     closePopup()
+
 }
 
-formButton.addEventListener('click', buttonActive)
-popupClose.addEventListener('click', closePopup)
 buttonPopupOn.addEventListener('click', openPopup)
+popupClose.addEventListener('click', closePopup)
+popupForm.addEventListener('submit', formSubmitHandler);
 
 
 
