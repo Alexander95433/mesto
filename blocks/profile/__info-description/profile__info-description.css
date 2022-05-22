@@ -6,11 +6,6 @@
     white-space: pre;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin: 0;
 }
 
-@media screen and (max-width:400px) {
-    .profile__info-description {
-        font-size: 14px;
-        line-height: 17px;
-    }
-}

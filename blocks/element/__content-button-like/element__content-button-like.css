@@ -1,7 +1,15 @@
 .element__content-button-like {
-    padding: 0;
     width: 22px;
     height: 22px;
-    background-color: white;
-    border: aliceblue;
+    transition: opacity .3s linear;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+
+.element__content-button-like:hover {
+    opacity: .5;
+    transition: .3s linear;
 }

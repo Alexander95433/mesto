@@ -1,10 +1,12 @@
 .profile__info-button {
-    background-color: #000000;
+    border: none;
+    background-color: transparent ;
     width: 24px;
     height: 24px;
     padding: 0;
     margin-left: 18px;
     transition: opacity 0.3s linear;
+    cursor: pointer;
 }
 
 .profile__info-button:hover {
@@ -14,8 +16,8 @@
 
 @media screen and (max-width:320px) {
     .profile__info-button {
-        width: 20px;
-        height: 20px;
+        width: 18px;
+        height: 18px;
         margin-left: 10px;
     }
     

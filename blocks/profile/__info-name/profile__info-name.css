@@ -2,32 +2,20 @@
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
-    font-size: 42px;
+    font-size: 40px;
     line-height: 48px;
     padding-bottom: 16px;
+    padding-top: 26px;
     white-space: pre;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-@media screen and (max-width:700px) {
-    .profile__info-name {
-        font-size: 42px;
-        line-height: 48px;
-    }
-}
-
-
-@media screen and (max-width:400px) {
-    .profile__info-name {
-        font-size: 36px;
-        line-height: 42px;
-    }
+    margin: 0;
 }
 
 
 
-@media screen and (max-width:320px) {
+
+@media screen and (max-width:650px) {
     .profile__info-name {
         font-size: 27px;
         line-height: 33px;

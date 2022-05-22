@@ -1,12 +1,14 @@
 .profile__content {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr;
     align-items: baseline;
     margin-left: 30px;
     overflow: hidden;
 }
 
-@media screen and (max-width:400px) {
+@media screen and (max-width:650px) {
     .profile__content {
         margin-left: 0px;
+        width: 282px;
     }
 }
