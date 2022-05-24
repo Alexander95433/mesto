@@ -1,5 +1,5 @@
 .element__content-button-like {
-    width: 22px;
+    min-width: 22px;
     height: 22px;
     transition: opacity .3s linear;
     background-color: transparent;

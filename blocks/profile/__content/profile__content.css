@@ -1,6 +1,7 @@
 .profile__content {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: repeat(2, auto);
+    justify-content: center;
     align-items: baseline;
     margin-left: 30px;
     overflow: hidden;

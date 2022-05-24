@@ -18,6 +18,7 @@
 @import url(../blocks/profile/__info-name/profile__info-name.css);
 @import url(../blocks/profile/__info-description/profile__info-description.css);
 @import url(../blocks/profile/__info-button/profile__info-button.css);
+@import url(../blocks/profile/__info-button-picture/profile__info-button-picture.css);
 @import url(../blocks/profile/__picture-cross-box/profile__picture-cross-box.css);
 @import url(../blocks/profile/__picture-cross/profile__picture-cross.css);
 

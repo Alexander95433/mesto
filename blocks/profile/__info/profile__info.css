@@ -6,7 +6,7 @@
     text-align: left;
 }
 
-@media screen and (max-width:320px) {
+@media screen and (max-width:350px) {
     .profile__info {
         text-align: center;
     }
