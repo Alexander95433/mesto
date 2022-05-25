@@ -1,5 +1,5 @@
 .element__picture {
-    max-width: 282px;
+    width: 100%;
     mix-blend-mode: multiply;
 }
 

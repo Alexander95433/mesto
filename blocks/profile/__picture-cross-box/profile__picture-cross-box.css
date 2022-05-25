@@ -19,9 +19,12 @@
 
 }
 
-@media screen and (max-width:968px) {
+@media screen and (max-width:969px) {
     .profile__picture-cross-box {
         margin-left: 0;
+        width: 100%;
+        height: 50px;
+        margin: 36px auto 0;
     }
 }
 

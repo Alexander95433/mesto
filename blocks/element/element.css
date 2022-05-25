@@ -1,12 +1,18 @@
 .element {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(206px, min-content));
+    grid-template-columns: repeat(3,1fr );
     gap:20px 17px;
     margin-top: 51px;
 }
 
-@media screen and (max-width:969px) {
+/*@media screen and (max-width:1278px) {
+    .element {
+        grid-template-columns: repeat(auto-fit, minmax(205px, min-content));
+    }
+}
+
+*/@media screen and (max-width:969px) {
     .element {
         grid-template-columns: repeat(2,1fr);
     }
@@ -14,8 +20,9 @@
 
 @media screen and (max-width:650px) {
     .element {
-        grid-template-columns: repeat(1,1fr);
+        grid-template-columns: repeat(1,285px);
         margin-top: 39px;
+        justify-content: center;
     }
 }
 
