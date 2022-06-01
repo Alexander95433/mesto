@@ -48,3 +48,11 @@
 @import url(../blocks/popup/__fieldset/popup__fieldset.css);
 /*popup_visible*/
 @import url(../blocks/popup/_visible/popup_visible.css);
+
+.sss {width: 100%;
+height: 100%;
+position: relative;
+box-sizing: border-box;
+padding: 0 0 100%;
+overflow: hidden;
+}
