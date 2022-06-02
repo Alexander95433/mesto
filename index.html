@@ -34,7 +34,7 @@
         </section>
 
         <section class="element">
-            
+
 
 
 
@@ -43,26 +43,45 @@
     <footer class="footer">
         <p class="footer__signature">© 2020 Mesto Russia</p>
     </footer>
-    <div class="popup ">
-        <div class="popup__window">
-            <button class="popup__close" type='button'></button>
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <form class="popup__form" name="profile-edit">
-                <fieldset class="popup__fieldset">
-                    <input class="popup__form-name" type="text" name="form-name" value="Жак-Ив Кусто">
-                    <input class="popup__form-description" type="text" name="form-description"
-                        value="Исследователь океана">
-                    <button class="popup__form-button" type="submit">Сохранить</button>
-                </fieldset>
-            </form>
+    <!--popup popup-edit-profile -->
+        <div class="popup popup-edit-profile">
+            <div class="popup__window">
+                <button class="popup__close popup__close-edit-profile" type='button'></button>
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <form class="popup__form popup__form-edit-profile" name="profile-edit">
+                    <fieldset class="popup__fieldset">
+                        <input class="popup__form-name popup__form-name-edit-profile" type="text" name="form-name" value="Жак-Ив Кусто">
+                        <input class="popup__form-description popup__form-description-edit-profile" type="text" name="form-description"
+                            value="Исследователь океана">
+                        <button class="popup__form-button popup__form-button-edit-profile" type="submit">Сохранить</button>
+                    </fieldset>
+                </form>
+            </div>
         </div>
-    </div>
-    
+    <!--popup add-a-card -->
+        <div class="popup popup-add-a-card">
+            <div class="popup__window">
+                <button class="popup__close popup__close-add-a-card" type='button'></button>
+                <h2 class="popup__title popup__title-add-a-card">Новое место</h2>
+                <form class="popup__form popup__form-add-a-card" name="profile-edit">
+                    <fieldset class="popup__fieldset popup__fieldset-add-a-card">
+                        <input class="popup__form-name popup__form-name-add-a-card" type="text" name="form-name" placeholder="Название">
+                        <input class="popup__form-description  popup__form-description-add-a-card"  type="text" name="form-description"
+                        placeholder="Ссылка на картинку">
+                        <button class="popup__form-button popup__form-button-add-a-card" type="submit">Создать</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+  
     <template id="element-template">
         <article class="element__card">
+            <button class="element__trash" type="button">
+                <img class="element__trash-picture" src="./image/trash.svg" alt="Удалить">
+            </button>
             <div class="sss">
-            <img class="element__picture" src="#" alt="">
-        </div>
+                <img class="element__picture" src="#" alt="">
+            </div>
             <div class="element__content">
                 <h2 class="element__content-title"></h2>
                 <button class="element__content-button-like" type="button">
