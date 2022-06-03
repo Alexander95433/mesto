@@ -70,11 +70,53 @@
     padding: 0;
     transition: opacity .3s linear;
 }
+
 .element__trash:hover {
     opacity: .5;
     transition: opacity .3s linear;
 }
+
 .element__trash-picture {
     width: 100%;
     height: 100%;
+}
+
+
+.popup_zoom-cards {
+    background-color: rgba(0, 0, 0, .9);
+}
+
+.popup__window_zoom-cards {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    border: none;
+    padding: 0;
+    width: auto;
+    border-radius: 0;
+    background-color: transparent;
+}
+
+.popup__close_zoom-cards {
+    top: -40px;
+    right: -40px;
+    left: auto;
+    bottom: auto;
+}
+
+
+.popup-zoom-cards__picture {
+    max-width: 75vw;
+    max-height: 75vh;
+}
+
+.popup-zoom-cards__subtitle {
+    color: white;
+    padding: 10px 0 0 0;
+    margin: 0;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
 }

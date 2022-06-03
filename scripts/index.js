@@ -25,8 +25,12 @@ const popupFormNameCard = document.querySelector('.popup__form-name-add-a-card')
 const popupFormDescriptionCard = document.querySelector('.popup__form-description-add-a-card')
 
 //popup zoom picture cards
-const popupZoomPictureCards = document.querySelector('.element__card')
-
+const elementCard = document.querySelector('.element__card')
+const elementPicture = document.querySelector('.sss')
+const popupZoomCards = document.querySelector('.popup_zoom-cards')
+const popupZoomCardsPicture = document.querySelector('.popup-zoom-cards__picture')
+const popupZoomCardsSubtitle = document.querySelector('.popup-zoom-cards__subtitle')
+const popupCloseZoomCards = document.querySelector('.popup__close_zoom-cards')
 
 const initialCards = [
     {
@@ -76,7 +80,7 @@ function formSubmitHandler(evt) {
 
 //открыть popup add-a-card//
 function openPopupCard() {
-    popup.classList.add('popup_visible')
+    popupCard.classList.add('popup_visible')
 }
 
 //закрыть popup add-a-card//
@@ -94,14 +98,26 @@ function dellCard(event) {
     event.target.closest('.element__card').remove();
 }
 
-//Открываю popup с фото
-function ZoomPictureCards(cadr) {
-    //popup.classList.add('popup_visible')
+//Открываю popup zoom //
+function zoomPictureCardsOn() {
+    popupZoomCards.classList.add('popup_visible')
 }
 
+//закрываю popup с zoom//
+function zoomPictureCardsOff() {
+    popupZoomCards.classList.remove('popup_visible')
+}
+
+//Привязываю карточки к popup zoom
+function popupZoom (Cards) {
+    popupZoomCardsPicture.src = Cards.link
+    popupZoomCardsSubtitle.textContent = Cards.name
+    //Открываю popup zoom //
+    zoomPictureCardsOn()
+}
 
 //создаю карточки  //
-function nevCards(nevCards) {
+function nevCards(Cards) {
     const elementTemplate = document.querySelector('#element-template').content
     const elementTemplateClone = elementTemplate.cloneNode(true)
     const elementPictureClone = elementTemplateClone.querySelector('.element__picture')
@@ -110,12 +126,14 @@ function nevCards(nevCards) {
     const buttonTrashElement = elementTemplateClone.querySelector('.element__trash')
 
     //наполняю template//
-    elementPictureClone.src = nevCards.link
-    elementTitleClone.textContent = nevCards.name
+    elementPictureClone.src = Cards.link
+    elementTitleClone.textContent = Cards.name
     //подключаю активацию кнопки лайк//
     likeButtonClone.addEventListener('click', like)
     //удаляю карточку//
     buttonTrashElement.addEventListener('click', dellCard)
+    //открываю popup увеличение изображения карточки//
+    elementPictureClone.addEventListener('click',function () {popupZoom(Cards)} )
     // возвращаю значение склонированной переменной //
     return elementTemplateClone
 }
@@ -135,14 +153,16 @@ initialCards.forEach((cards) => {
     elementHtml.append(nevCards(cards))
 })
 
+//слушатели//
 buttonPopupOn.addEventListener('click', openPopup)
 popupClose.addEventListener('click', closePopup)
 popupForm.addEventListener('submit', formSubmitHandler)
-
 buttonCard.addEventListener('click', openPopupCard)
 popupCloseCard.addEventListener('click', closePopupCard)
 popupFormCard.addEventListener('submit', formSubmitHandlerCard)
-//popupZoomPictureCards.addEventListener('click',ZoomPictureCards)
+popupCloseZoomCards.addEventListener('click', zoomPictureCardsOff)
+
+
 
 
 
