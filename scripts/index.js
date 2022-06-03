@@ -26,7 +26,6 @@ const popupFormDescriptionCard = document.querySelector('.popup__form-descriptio
 
 //popup zoom picture cards
 const elementCard = document.querySelector('.element__card')
-const elementPicture = document.querySelector('.sss')
 const popupZoomCards = document.querySelector('.popup_zoom-cards')
 const popupZoomCardsPicture = document.querySelector('.popup-zoom-cards__picture')
 const popupZoomCardsSubtitle = document.querySelector('.popup-zoom-cards__subtitle')
@@ -117,14 +116,14 @@ function popupZoom (Cards) {
 }
 
 //создаю карточки  //
-function nevCards(Cards) {
+function createCards(Cards) {
+    //переменные для clone//
     const elementTemplate = document.querySelector('#element-template').content
     const elementTemplateClone = elementTemplate.cloneNode(true)
     const elementPictureClone = elementTemplateClone.querySelector('.element__picture')
     const elementTitleClone = elementTemplateClone.querySelector('.element__content-title')
     const likeButtonClone = elementTemplateClone.querySelector('.element__content-button-like')
     const buttonTrashElement = elementTemplateClone.querySelector('.element__trash')
-
     //наполняю template//
     elementPictureClone.src = Cards.link
     elementTitleClone.textContent = Cards.name
@@ -137,21 +136,22 @@ function nevCards(Cards) {
     // возвращаю значение склонированной переменной //
     return elementTemplateClone
 }
+
+//расскладываю массив карточек  //
+initialCards.forEach((Cards) => {
+    elementHtml.append(createCards(Cards))
+})
+
 //Добавить новую карточку//
 function formSubmitHandlerCard(evt) {
     evt.preventDefault();
-    const nevCardElement = nevCards({
+    const nevCardElement = createCards({
         name: popupFormNameCard.value,
         link: popupFormDescriptionCard.value
     })
     elementHtml.prepend(nevCardElement)
     closePopupCard()
 }
-
-//расскладываю массив карточек  //
-initialCards.forEach((cards) => {
-    elementHtml.append(nevCards(cards))
-})
 
 //слушатели//
 buttonPopupOn.addEventListener('click', openPopup)
@@ -161,6 +161,7 @@ buttonCard.addEventListener('click', openPopupCard)
 popupCloseCard.addEventListener('click', closePopupCard)
 popupFormCard.addEventListener('submit', formSubmitHandlerCard)
 popupCloseZoomCards.addEventListener('click', zoomPictureCardsOff)
+
 
 
 

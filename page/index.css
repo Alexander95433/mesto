@@ -58,6 +58,7 @@
     overflow: hidden;
 }
 
+/*trash*/
 .element__trash {
     position: absolute;
     top: 20px;
@@ -81,7 +82,7 @@
     height: 100%;
 }
 
-
+/*zoom-cards*/
 .popup_zoom-cards {
     background-color: rgba(0, 0, 0, .9);
 }
