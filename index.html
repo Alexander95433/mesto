@@ -34,46 +34,44 @@
         </section>
 
         <section class="element">
-
-
-
-
         </section>
     </main>
     <footer class="footer">
         <p class="footer__signature">© 2020 Mesto Russia</p>
     </footer>
     <!--popup popup-edit-profile -->
-        <div class="popup popup-edit-profile">
-            <div class="popup__window">
-                <button class="popup__close popup__close-edit-profile" type='button'></button>
-                <h2 class="popup__title">Редактировать профиль</h2>
-                <form class="popup__form popup__form-edit-profile" name="profile-edit">
-                    <fieldset class="popup__fieldset">
-                        <input class="popup__form-name popup__form-name-edit-profile" type="text" name="form-name" value="Жак-Ив Кусто">
-                        <input class="popup__form-description popup__form-description-edit-profile" type="text" name="form-description"
-                            value="Исследователь океана">
-                        <button class="popup__form-button popup__form-button-edit-profile" type="submit">Сохранить</button>
-                    </fieldset>
-                </form>
-            </div>
+    <div class="popup popup-edit-profile">
+        <div class="popup__window">
+            <button class="popup__close popup__close-edit-profile" type='button'></button>
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <form class="popup__form popup__form-edit-profile" name="profile-edit">
+                <fieldset class="popup__fieldset">
+                    <input class="popup__form-name popup__form-name-edit-profile" type="text" name="form-name"
+                        value="Жак-Ив Кусто">
+                    <input class="popup__form-description popup__form-description-edit-profile" type="text"
+                        name="form-description" value="Исследователь океана">
+                    <button class="popup__form-button popup__form-button-edit-profile" type="submit">Сохранить</button>
+                </fieldset>
+            </form>
         </div>
+    </div>
     <!--popup add-a-card -->
-        <div class="popup popup-add-a-card">
-            <div class="popup__window">
-                <button class="popup__close popup__close-add-a-card" type='button'></button>
-                <h2 class="popup__title popup__title-add-a-card">Новое место</h2>
-                <form class="popup__form popup__form-add-a-card" name="profile-edit">
-                    <fieldset class="popup__fieldset popup__fieldset-add-a-card">
-                        <input class="popup__form-name popup__form-name-add-a-card" type="text" name="form-name" placeholder="Название">
-                        <input class="popup__form-description  popup__form-description-add-a-card"  type="text" name="form-description"
-                        placeholder="Ссылка на картинку">
-                        <button class="popup__form-button popup__form-button-add-a-card" type="submit">Создать</button>
-                    </fieldset>
-                </form>
-            </div>
+    <div class="popup popup-add-a-card">
+        <div class="popup__window">
+            <button class="popup__close popup__close-add-a-card" type='button'></button>
+            <h2 class="popup__title popup__title-add-a-card">Новое место</h2>
+            <form class="popup__form popup__form-add-a-card" name="profile-edit">
+                <fieldset class="popup__fieldset popup__fieldset-add-a-card">
+                    <input class="popup__form-name popup__form-name-add-a-card" type="text" name="form-name"
+                        placeholder="Название">
+                    <input class="popup__form-description  popup__form-description-add-a-card" type="text"
+                        name="form-description" placeholder="Ссылка на картинку">
+                    <button class="popup__form-button popup__form-button-add-a-card" type="submit">Создать</button>
+                </fieldset>
+            </form>
         </div>
-  
+    </div>
+    <!--element__card template-->
     <template id="element-template">
         <article class="element__card">
             <button class="element__trash" type="button">
@@ -89,6 +87,24 @@
             </div>
         </article>
     </template>
+    <!--popup zoom picture cards-->
+        <figure class="popup popup-zoom-picture-cards">
+            <button class="popup__close popup__close-popup-zoom-picture-cards" type='button'></button>
+            <img class="popup-zoom-picture-cards__picture" src="./image/1.jpg" alt="">
+            <figcaption class="popup-zoom-picture-cards__subtitle"></figcaption>
+
+            <form class="popup__form popup__form-popup-zoom-picture-cards" name="profile-edit">
+                <fieldset class="popup__fieldset popup__fieldset-popup-zoom-picture-cards">
+                    <input class="popup__form-name popup__form-name-add-a-card" type="text" name="form-name"
+                        placeholder="Название">
+                    <input class="popup__form-description  popup__form-description-popup-zoom-picture-cards" type="text"
+                        name="form-description" placeholder="Ссылка на картинку">
+                    <button class="popup__form-button popup__form-button-popup-zoom-picture-cards" type="submit">Создать</button>
+                </fieldset>
+            </form>
+  
+        </figure>
+   
 
     <script src="./scripts/index.js"></script>
 </body>

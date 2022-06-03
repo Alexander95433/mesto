@@ -15,6 +15,19 @@ const profileInfoDescription = document.querySelector('.profile__info-descriptio
 //переменные для template//
 const elementHtml = document.querySelector('.element')
 
+//Для popup add-a-card// 
+const popupCard = document.querySelector('.popup-add-a-card')
+const buttonCard = document.querySelector('.profile__picture-cross-box')
+const popupCloseCard = document.querySelector('.popup__close-add-a-card')
+const buttonCreatePopupCard = document.querySelector('.popup__form-button-add-a-card')
+const popupFormCard = document.querySelector('.popup__form-add-a-card')
+const popupFormNameCard = document.querySelector('.popup__form-name-add-a-card')
+const popupFormDescriptionCard = document.querySelector('.popup__form-description-add-a-card')
+
+//popup zoom picture cards
+const popupZoomPictureCards = document.querySelector('.element__card')
+
+
 const initialCards = [
     {
         name: 'Архыз',
@@ -61,9 +74,34 @@ function formSubmitHandler(evt) {
     closePopup()
 }
 
+//открыть popup add-a-card//
+function openPopupCard() {
+    popup.classList.add('popup_visible')
+}
+
+//закрыть popup add-a-card//
+function closePopupCard() {
+    popupCard.classList.remove('popup_visible')
+}
+
+//подключаю активацию кнопки лайк//
+function like(event) {
+    event.target.classList.toggle('element__content-button-like-picture_active')
+}
+
+//удаляю карточку//
+function dellCard(event) {
+    event.target.closest('.element__card').remove();
+}
+
+//Открываю popup с фото
+function ZoomPictureCards(cadr) {
+    //popup.classList.add('popup_visible')
+}
+
 
 //создаю карточки  //
-function nevCards(initialCards) {
+function nevCards(nevCards) {
     const elementTemplate = document.querySelector('#element-template').content
     const elementTemplateClone = elementTemplate.cloneNode(true)
     const elementPictureClone = elementTemplateClone.querySelector('.element__picture')
@@ -72,50 +110,14 @@ function nevCards(initialCards) {
     const buttonTrashElement = elementTemplateClone.querySelector('.element__trash')
 
     //наполняю template//
-    elementPictureClone.src = initialCards.link
-    elementTitleClone.textContent = initialCards.name
+    elementPictureClone.src = nevCards.link
+    elementTitleClone.textContent = nevCards.name
     //подключаю активацию кнопки лайк//
-    likeButtonClone.addEventListener('click', (event) => {
-        event.target.classList.toggle('element__content-button-like-picture_active')
-    })
+    likeButtonClone.addEventListener('click', like)
     //удаляю карточку//
-    buttonTrashElement.addEventListener('click', function (event) {
-        event.target.closest('.element__card').remove();
-      })
+    buttonTrashElement.addEventListener('click', dellCard)
     // возвращаю значение склонированной переменной //
     return elementTemplateClone
-}
-
-//расскладываю массив карточек  //
-initialCards.forEach((initialCards) => {
-    elementHtml.append(nevCards(initialCards))
-})
-
-buttonPopupOn.addEventListener('click', openPopup)
-popupClose.addEventListener('click', closePopup)
-popupForm.addEventListener('submit', formSubmitHandler)
-
-
-
-
-
-//Для popup add-a-card// 
-const popupCard = document.querySelector('.popup-add-a-card')
-const buttonCard = document.querySelector('.profile__picture-cross-box')
-const popupCloseCard = document.querySelector('.popup__close-add-a-card')
-const buttonCreatePopupCard = document.querySelector('.popup__form-button-add-a-card')
-const popupFormCard = document.querySelector('.popup__form-add-a-card')
-const popupFormNameCard = document.querySelector('.popup__form-name-add-a-card')
-const popupFormDescriptionCard = document.querySelector('.popup__form-description-add-a-card')
-
-
-//открыть popup add-a-card//
-function openPopupCard() {
-    popupCard.classList.add('popup_visible')
-}
-//закрыть popup add-a-card//
-function closePopupCard() {
-    popupCard.classList.remove('popup_visible')
 }
 //Добавить новую карточку//
 function formSubmitHandlerCard(evt) {
@@ -128,19 +130,20 @@ function formSubmitHandlerCard(evt) {
     closePopupCard()
 }
 
-//Удаление карточки//
+//расскладываю массив карточек  //
+initialCards.forEach((cards) => {
+    elementHtml.append(nevCards(cards))
+})
 
-  
-
-
-
-
-
-
+buttonPopupOn.addEventListener('click', openPopup)
+popupClose.addEventListener('click', closePopup)
+popupForm.addEventListener('submit', formSubmitHandler)
 
 buttonCard.addEventListener('click', openPopupCard)
 popupCloseCard.addEventListener('click', closePopupCard)
 popupFormCard.addEventListener('submit', formSubmitHandlerCard)
+//popupZoomPictureCards.addEventListener('click',ZoomPictureCards)
+
 
 
 
