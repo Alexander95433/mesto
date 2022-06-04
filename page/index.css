@@ -1,5 +1,6 @@
 @import url(../vendor/normalize.css);
-@import url(../vendor/fonts/font-Inter.css);
+@import url(../vendor/fonts/inter.css);
+
 
 /*page*/
 @import url(../blocks/page/page.css);
@@ -50,6 +51,8 @@
 @import url(../blocks/popup/__form-description/popup__form-description.css);
 @import url(../blocks/popup/__form-button/popup__form-button.css);
 @import url(../blocks/popup/__fieldset/popup__fieldset.css);
+@import url(../blocks/popup/__form-name/_add-a-card/popup__form-name_add-a-card.css);
+@import url(../blocks/popup/__form-description/_add-a-card/popup__form-description_add-a-card.css);
 /*popup_visible*/
 @import url(../blocks/popup/_visible/popup_visible.css);
 
@@ -59,22 +62,3 @@
 @import url(../blocks/popup/_zoom-cards/__close_zoom-cards/popup__close_zoom-cards.css);
 @import url(../blocks/popup/__picture-zoom-cards/popup__picture-zoom-cards.css);
 @import url(../blocks/popup/__subtitle-zoom-cards/popup__subtitle-zoom-cards.css);
-
-/*.popup__form-name-add-a-card {
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-    color: #C4C4C4;
-}
-
-.popup__form-description-add-a-card {
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-    color: #C4C4C4;
-}*/
-

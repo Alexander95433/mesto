@@ -4,5 +4,11 @@
     object-fit: cover;
     mix-blend-mode: multiply;
     position: absolute;
+    transition: .3s linear;
+
 }
 
+.element__picture:hover {
+    transform: scale(1.03);
+    transition: .3s linear;
+}

@@ -20,8 +20,8 @@ const buttonCard = document.querySelector('.profile__picture-cross-box')
 const popupCloseCard = document.querySelector('.popup__close-add-a-card')
 const buttonCreatePopupCard = document.querySelector('.popup__form-button-add-a-card')
 const popupFormCard = document.querySelector('.popup__form-add-a-card')
-const popupFormNameCard = document.querySelector('.popup__form-name-add-a-card')
-const popupFormDescriptionCard = document.querySelector('.popup__form-description-add-a-card')
+const popupFormNameCard = document.querySelector('.popup__form-name_add-a-card')
+const popupFormDescriptionCard = document.querySelector('.popup__form-description_add-a-card')
 //popup zoom picture cards
 const popupZoomCards = document.querySelector('.popup_zoom-cards')
 const popupZoomCardsPicture = document.querySelector('.popup__picture-zoom-cards ')
@@ -71,7 +71,7 @@ function closePopupCard() {
 function handleLikeCard(event) {
     event.target.classList.toggle('element__content-button-like-picture_active')
 }
-
+//like
 //удаляю карточку//
 function deleteCard(event) {
     event.target.closest('.element__card').remove();
