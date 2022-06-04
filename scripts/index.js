@@ -35,37 +35,43 @@ const popupZoomCardsPicture = document.querySelector('.popup__picture-zoom-cards
 const popupZoomCardsSubtitle = document.querySelector('.popup__subtitle-zoom-cards ')
 const popupCloseZoomCards = document.querySelector('.popup__close_zoom-cards')
 
-function openPopup (popup) {
-    popup.classList.add('popup_opened');
- }  
- 
+//универсальная функция для открытия popup//
+ function openPopup(popup) {
+    popup.classList.add('popup_visible')
+  }
+//универсальная функция для закрытия popup//
+  function closePopup(popup) {
+    popup.classList.remove('popup_visible')
+  }
+
 //открытие popup// 
-function openPopup() {
+function openPopupEdit() {
     //Синхронизирует поля формы и профиля в случае если из popup вышли через popup__close// 
     formNameEdit.value = profileInfoName.textContent
     formDescriptionEdit.value = profileInfoDescription.textContent
-    popupEdit.classList.add('popup_visible')
+    openPopup(popupEdit)
+    
 }
 // закрывает popup// 
-function closePopup() {
-    popupEdit.classList.remove('popup_visible')
+function closePopupEdit() {
+    closePopup(popupEdit)
 }
 //Кнопка "сохранить" в popup//
 function formSubmitHandler(evt) {
     evt.preventDefault();
     profileInfoName.textContent = formNameEdit.value
     profileInfoDescription.textContent = formDescriptionEdit.value
-    closePopup()
+    closePopupEdit()
 }
 
 //открыть popup add-a-card//
 function openPopupCard() {
-    popupCard.classList.add('popup_visible')
+    openPopup(popupCard) 
 }
 
 //закрыть popup add-a-card//
 function closePopupCard() {
-    popupCard.classList.remove('popup_visible')
+    closePopup(popupCard)
 }
 
 //подключаю активацию кнопки лайк//
@@ -80,12 +86,12 @@ function dellCard(event) {
 
 //Открываю popup zoom //
 function zoomPictureCardsOn() {
-    popupZoomCards.classList.add('popup_visible')
+    openPopup(popupZoomCards) 
 }
 
 //закрываю popup с zoom//
 function zoomPictureCardsOff() {
-    popupZoomCards.classList.remove('popup_visible')
+    closePopup(popupZoomCards)
 }
 
 //Привязываю карточки к popup zoom
@@ -135,8 +141,8 @@ function formSubmitHandlerCard(evt) {
 }
 
 //слушатели//
-buttonPopupOn.addEventListener('click', openPopup)
-popupCloseEdit.addEventListener('click', closePopup)
+buttonPopupOn.addEventListener('click', openPopupEdit)
+popupCloseEdit.addEventListener('click', closePopupEdit)
 popupFormEdit.addEventListener('submit', formSubmitHandler)
 buttonCard.addEventListener('click', openPopupCard)
 popupCloseCard.addEventListener('click', closePopupCard)
