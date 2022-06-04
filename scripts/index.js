@@ -4,22 +4,16 @@ const buttonPopupOn = document.querySelector('.profile__info-button')
 const popupClassOn = document.querySelector('.popup_visible')
 const popupCloseEdit = document.querySelector('.popup__close-edit-profile')
 const popupEdit = document.querySelector('.popup-edit-profile')
-
-//popupClose popup
-
 //Заполнение popup form-edit-profile// 
 const popupFormEdit = document.querySelector('.popup__form-edit-profile')
 const formNameEdit = popupFormEdit.querySelector('.popup__form-name-edit-profile')
 const formDescriptionEdit = popupFormEdit.querySelector('.popup__form-description-edit-profile')
-
-//formName formDescription formButton const formButtonEdit = popupFormEdit.querySelector('.popup__form-button-edit-profile')
-
 //Заполнение профиля// 
 const profileInfoName = document.querySelector('.profile__info-name')
 const profileInfoDescription = document.querySelector('.profile__info-description')
 //переменные для template//
+const elementTemplate = document.querySelector('#element-template').content
 const cardsContainer = document.querySelector('.element')
-//elementHtml
 //Для popup add-a-card// 
 const popupCard = document.querySelector('.popup-add-a-card')
 const buttonCard = document.querySelector('.profile__picture-cross-box')
@@ -28,7 +22,6 @@ const buttonCreatePopupCard = document.querySelector('.popup__form-button-add-a-
 const popupFormCard = document.querySelector('.popup__form-add-a-card')
 const popupFormNameCard = document.querySelector('.popup__form-name-add-a-card')
 const popupFormDescriptionCard = document.querySelector('.popup__form-description-add-a-card')
-
 //popup zoom picture cards
 const popupZoomCards = document.querySelector('.popup_zoom-cards')
 const popupZoomCardsPicture = document.querySelector('.popup__picture-zoom-cards ')
@@ -36,13 +29,13 @@ const popupZoomCardsSubtitle = document.querySelector('.popup__subtitle-zoom-car
 const popupCloseZoomCards = document.querySelector('.popup__close_zoom-cards')
 
 //универсальная функция для открытия popup//
- function openPopup(popup) {
+function openPopup(popup) {
     popup.classList.add('popup_visible')
-  }
+}
 //универсальная функция для закрытия popup//
-  function closePopup(popup) {
+function closePopup(popup) {
     popup.classList.remove('popup_visible')
-  }
+}
 
 //открытие popup// 
 function openPopupEdit() {
@@ -50,14 +43,14 @@ function openPopupEdit() {
     formNameEdit.value = profileInfoName.textContent
     formDescriptionEdit.value = profileInfoDescription.textContent
     openPopup(popupEdit)
-    
+
 }
 // закрывает popup// 
 function closePopupEdit() {
     closePopup(popupEdit)
 }
 //Кнопка "сохранить" в popup//
-function formSubmitHandler(evt) {
+function handleProfileFormSubmit(evt) {
     evt.preventDefault();
     profileInfoName.textContent = formNameEdit.value
     profileInfoDescription.textContent = formDescriptionEdit.value
@@ -66,7 +59,7 @@ function formSubmitHandler(evt) {
 
 //открыть popup add-a-card//
 function openPopupCard() {
-    openPopup(popupCard) 
+    openPopup(popupCard)
 }
 
 //закрыть popup add-a-card//
@@ -75,18 +68,18 @@ function closePopupCard() {
 }
 
 //подключаю активацию кнопки лайк//
-function like(event) {
+function handleLikeCard(event) {
     event.target.classList.toggle('element__content-button-like-picture_active')
 }
 
 //удаляю карточку//
-function dellCard(event) {
+function deleteCard(event) {
     event.target.closest('.element__card').remove();
 }
 
 //Открываю popup zoom //
 function zoomPictureCardsOn() {
-    openPopup(popupZoomCards) 
+    openPopup(popupZoomCards)
 }
 
 //закрываю popup с zoom//
@@ -95,58 +88,60 @@ function zoomPictureCardsOff() {
 }
 
 //Привязываю карточки к popup zoom
-function popupZoom (Cards) {
-    popupZoomCardsPicture.src = Cards.link
-    popupZoomCardsSubtitle.textContent = Cards.name
+function popupZoom(card) {
+    popupZoomCardsPicture.src = card.link
+    popupZoomCardsSubtitle.textContent = card.name
     //Открываю popup zoom //
     zoomPictureCardsOn()
 }
 
 //создаю карточки  //
-function createCards(Cards) {
+function createCards(card) {
     //переменные для clone//
-    const elementTemplate = document.querySelector('#element-template').content
     const elementTemplateClone = elementTemplate.cloneNode(true)
     const elementPictureClone = elementTemplateClone.querySelector('.element__picture')
     const elementTitleClone = elementTemplateClone.querySelector('.element__content-title')
     const likeButtonClone = elementTemplateClone.querySelector('.element__content-button-like')
     const buttonTrashElement = elementTemplateClone.querySelector('.element__trash')
     //наполняю template//
-    elementPictureClone.src = Cards.link
-    elementTitleClone.textContent = Cards.name
+    elementPictureClone.src = card.link
+    elementPictureClone.alt = card.name
+    elementTitleClone.textContent = card.name
+
     //подключаю активацию кнопки лайк//
-    likeButtonClone.addEventListener('click', like)
+    likeButtonClone.addEventListener('click', handleLikeCard)
     //удаляю карточку//
-    buttonTrashElement.addEventListener('click', dellCard)
+    buttonTrashElement.addEventListener('click', deleteCard)
     //открываю popup увеличение изображения карточки//
-    elementPictureClone.addEventListener('click',function () {popupZoom(Cards)} )
+    elementPictureClone.addEventListener('click', function () { popupZoom(card) })
     // возвращаю значение склонированной переменной //
     return elementTemplateClone
 }
 
 //расскладываю массив карточек  //
-initialCards.forEach((Cards) => {
-    cardsContainer.append(createCards(Cards))
+initialCards.forEach((card) => {
+    cardsContainer.append(createCards(card))
 })
 
 //Добавить новую карточку//
-function formSubmitHandlerCard(evt) {
+function handleCardFormSubmit(evt) {
     evt.preventDefault();
     const nevCardElement = createCards({
         name: popupFormNameCard.value,
         link: popupFormDescriptionCard.value
     })
     cardsContainer.prepend(nevCardElement)
+    popupFormCard.reset();
     closePopupCard()
 }
 
 //слушатели//
 buttonPopupOn.addEventListener('click', openPopupEdit)
 popupCloseEdit.addEventListener('click', closePopupEdit)
-popupFormEdit.addEventListener('submit', formSubmitHandler)
+popupFormEdit.addEventListener('submit', handleProfileFormSubmit)
 buttonCard.addEventListener('click', openPopupCard)
 popupCloseCard.addEventListener('click', closePopupCard)
-popupFormCard.addEventListener('submit', formSubmitHandlerCard)
+popupFormCard.addEventListener('submit', handleCardFormSubmit)
 popupCloseZoomCards.addEventListener('click', zoomPictureCardsOff)
 
 

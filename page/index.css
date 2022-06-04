@@ -60,7 +60,7 @@
 @import url(../blocks/popup/__picture-zoom-cards/popup__picture-zoom-cards.css);
 @import url(../blocks/popup/__subtitle-zoom-cards/popup__subtitle-zoom-cards.css);
 
-.popup__form-name-add-a-card {
+/*.popup__form-name-add-a-card {
     font-family: "Inter";
     font-style: normal;
     font-weight: 400;
@@ -76,5 +76,5 @@
     font-size: 14px;
     line-height: 17px;
     color: #C4C4C4;
-}
+}*/
 
