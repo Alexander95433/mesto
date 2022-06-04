@@ -25,6 +25,10 @@
 /*element*/
 @import url(../blocks/element/element.css);
 @import url(../blocks/element/__card/element__card.css);
+@import url(../blocks/element/__trash/element__trash.css);
+@import url(../blocks/element/__trash-picture/element__trash-picture.css);
+
+@import url(../blocks/element/__picture-wrapper/element__picture-wrapper.css);
 @import url(../blocks/element/__picture/element__picture.css);
 @import url(../blocks/element/__content/element__content.css);
 @import url(../blocks/element/__content-title/element__content-title.css);
@@ -49,75 +53,9 @@
 /*popup_visible*/
 @import url(../blocks/popup/_visible/popup_visible.css);
 
-.sss {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    box-sizing: border-box;
-    padding: 0 0 100%;
-    overflow: hidden;
-}
-
-/*trash*/
-.element__trash {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 18px;
-    height: 19px;
-    z-index: 1;
-    background-color: transparent;
-    border: none;
-    padding: 0;
-    transition: opacity .3s linear;
-}
-
-.element__trash:hover {
-    opacity: .5;
-    transition: opacity .3s linear;
-}
-
-.element__trash-picture {
-    width: 100%;
-    height: 100%;
-}
-
 /*zoom-cards*/
-.popup_zoom-cards {
-    background-color: rgba(0, 0, 0, .9);
-}
-
-.popup__window_zoom-cards {
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    border: none;
-    padding: 0;
-    width: auto;
-    border-radius: 0;
-    background-color: transparent;
-}
-
-.popup__close_zoom-cards {
-    top: -40px;
-    right: -40px;
-    left: auto;
-    bottom: auto;
-}
-
-
-.popup-zoom-cards__picture {
-    max-width: 75vw;
-    max-height: 75vh;
-}
-
-.popup-zoom-cards__subtitle {
-    color: white;
-    padding: 10px 0 0 0;
-    margin: 0;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 15px;
-}
+@import url(../blocks/popup/_zoom-cards/popup_zoom-cards.css);
+@import url(../blocks/popup/_zoom-cards/__window_zoom-cards/popup__window_zoom-cards.css);
+@import url(../blocks/popup/_zoom-cards/__close_zoom-cards/popup__close_zoom-cards.css);
+@import url(../blocks/popup/__picture-zoom-cards/popup__picture-zoom-cards.css);
+@import url(../blocks/popup/__subtitle-zoom-cards/popup__subtitle-zoom-cards.css);

@@ -3,8 +3,9 @@
     background-repeat: no-repeat;
     background-position: center;
     min-width: 22px;
-    height: 19px;
-    transition: opacity .3s linear;
+    height: 19px; 
+    opacity: 1;
+    transition: .3s linear;
     background-color: transparent;
     border: none;
     padding: 0;
@@ -14,5 +15,5 @@
 
 .element__content-button-like:hover {
     opacity: .5;
-    transition: .3s linear;
+    transition: .2s linear;
 }

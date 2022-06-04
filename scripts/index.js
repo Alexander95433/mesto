@@ -27,8 +27,8 @@ const popupFormDescriptionCard = document.querySelector('.popup__form-descriptio
 //popup zoom picture cards
 const elementCard = document.querySelector('.element__card')
 const popupZoomCards = document.querySelector('.popup_zoom-cards')
-const popupZoomCardsPicture = document.querySelector('.popup-zoom-cards__picture')
-const popupZoomCardsSubtitle = document.querySelector('.popup-zoom-cards__subtitle')
+const popupZoomCardsPicture = document.querySelector('.popup__picture-zoom-cards ')
+const popupZoomCardsSubtitle = document.querySelector('.popup__subtitle-zoom-cards ')
 const popupCloseZoomCards = document.querySelector('.popup__close_zoom-cards')
 
 const initialCards = [
