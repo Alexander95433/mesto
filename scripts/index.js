@@ -6,8 +6,8 @@ const popupCloseEdit = document.querySelector('.popup__close-edit-profile')
 const popupEdit = document.querySelector('.popup-edit-profile')
 //Заполнение popup form-edit-profile// 
 const popupFormEdit = document.querySelector('.popup__form-edit-profile')
-const formNameEdit = popupFormEdit.querySelector('.popup__form-name-edit-profile')
-const formDescriptionEdit = popupFormEdit.querySelector('.popup__form-description-edit-profile')
+const formNameEdit = popupFormEdit.querySelector('.popup__form-name_edit-profile')
+const formDescriptionEdit = popupFormEdit.querySelector('.popup__form-description_edit-profile')
 //Заполнение профиля// 
 const profileInfoName = document.querySelector('.profile__info-name')
 const profileInfoDescription = document.querySelector('.profile__info-description')
@@ -27,7 +27,7 @@ const popupZoomCards = document.querySelector('.popup_zoom-cards')
 const popupZoomCardsPicture = document.querySelector('.popup__picture-zoom-cards ')
 const popupZoomCardsSubtitle = document.querySelector('.popup__subtitle-zoom-cards ')
 const popupCloseZoomCards = document.querySelector('.popup__close_zoom-cards')
-
+//form-description-edit-profile
 //универсальная функция для открытия popup//
 function openPopup(popup) {
     popup.classList.add('popup_visible')
@@ -89,14 +89,15 @@ function zoomPictureCardsOff() {
 
 //Привязываю карточки к popup zoom
 function popupZoom(card) {
-    popupZoomCardsPicture.src = card.link
-    popupZoomCardsSubtitle.textContent = card.name
+    popupZoomCardsPicture.src = card.link;
+    popupZoomCardsPicture.alt = card.name;
+    popupZoomCardsSubtitle.textContent = card.name;
     //Открываю popup zoom //
-    zoomPictureCardsOn()
+    zoomPictureCardsOn();
 }
 
 //создаю карточки  //
-function createCards(card) {
+function createCard(card) {
     //переменные для clone//
     const elementTemplateClone = elementTemplate.cloneNode(true)
     const elementPictureClone = elementTemplateClone.querySelector('.element__picture')
@@ -120,14 +121,15 @@ function createCards(card) {
 
 //расскладываю массив карточек  //
 initialCards.forEach((card) => {
-    cardsContainer.append(createCards(card))
+    cardsContainer.append(createCard(card))
 })
 
 //Добавить новую карточку//
 function handleCardFormSubmit(evt) {
     evt.preventDefault();
-    const nevCardElement = createCards({
+    const nevCardElement = createCard({
         name: popupFormNameCard.value,
+        alt: popupFormNameCard.value,
         link: popupFormDescriptionCard.value
     })
     cardsContainer.prepend(nevCardElement)
