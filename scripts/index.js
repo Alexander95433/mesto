@@ -1,5 +1,6 @@
 
 //для popup-edit-profile// 
+//popup__form-button-edit-profile
 const buttonPopupOn = document.querySelector('.profile__info-button')
 const popupClassOn = document.querySelector('.popup_visible')
 const popupCloseEdit = document.querySelector('.popup__close-edit-profile')
@@ -18,7 +19,7 @@ const cardsContainer = document.querySelector('.element')
 const popupCard = document.querySelector('.popup-add-a-card')
 const buttonCard = document.querySelector('.profile__picture-cross-box')
 const popupCloseCard = document.querySelector('.popup__close-add-a-card')
-const buttonCreatePopupCard = document.querySelector('.popup__form-button-add-a-card')
+const buttonCreatePopupCard = document.querySelector('.popup__form-button')
 const popupFormCard = document.querySelector('.popup__form-add-a-card')
 const popupFormNameCard = document.querySelector('.popup__form-name_add-a-card')
 const popupFormDescriptionCard = document.querySelector('.popup__form-description_add-a-card')

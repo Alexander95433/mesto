@@ -64,3 +64,41 @@
 @import url(../blocks/popup/_zoom-cards/__close_zoom-cards/popup__close_zoom-cards.css);
 @import url(../blocks/popup/__picture-zoom-cards/popup__picture-zoom-cards.css);
 @import url(../blocks/popup/__subtitle-zoom-cards/popup__subtitle-zoom-cards.css);
+
+.popup__input-error{
+    color:#FF0000;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+.popup__form-name_edit-profile_error {
+    border-bottom: solid 1px #FF0000;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

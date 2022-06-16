@@ -46,11 +46,17 @@
             <h2 class="popup__title">Редактировать профиль</h2>
             <form class="popup__form popup__form-edit-profile" name="profile-edit">
                 <fieldset class="popup__fieldset">
-                    <input class="popup__form-name popup__form-name_edit-profile" type="text" name="form-name"
+                <!--- //////////////////////////////////////////////////////--->
+                    <input class="popup__form-name popup__form-name_edit-profile" id="form-name-edit-profile" type="text" name="form-name"
                         value="Жак-Ив Кусто" placeholder="Имя">
-                    <input class="popup__form-description popup__form-description_edit-profile" type="text"
+                        <!----элемент SPAN_1-->
+                        <span class="popup__input-error" id="form-name-edit-profile-error">hhhhhhhhhhhh</span>
+                <!--- //////////////////////////////////////////////////////--->
+                    <input class="popup__form-description popup__form-description_edit-profile" id="description-edit-profile" type="text"
                         name="form-description" value="Исследователь океана" placeholder="О себе">
-                    <button class="popup__form-button popup__form-button-edit-profile" type="submit">Сохранить</button>
+                        <!----элемент SPAN_2-->
+                        <span class="popup__input-error" id="description-edit-profile-error">dddddddddddddd</span>
+                    <button class="popup__form-button" type="submit" >Сохранить</button>
                 </fieldset>
             </form>
         </div>
@@ -62,11 +68,18 @@
             <h2 class="popup__title popup__title-add-a-card">Новое место</h2>
             <form class="popup__form popup__form-add-a-card" name="profile-edit">
                 <fieldset class="popup__fieldset popup__fieldset-add-a-card">
-                    <input class="popup__form-name popup__form-name_add-a-card" type="text" name="form-name"
+                <!--- //////////////////////////////////////////////////////--->
+                    <input class="popup__form-name popup__form-name_add-a-card" id="description-add-a-card" type="text" name="form-name"
                         placeholder="Название">
-                    <input class="popup__form-description  popup__form-description_add-a-card" type="text"
+                        <!----элемент SPAN_1-->
+                        <span class="popup__input-error" id="description-add-a-card-error">dddddddddddddd</span>
+                <!--- //////////////////////////////////////////////////////--->
+                    <input class="popup__form-description  popup__form-description_add-a-card" id="description-add-a-card" type="text"
                         name="form-description" placeholder="Ссылка на картинку">
-                    <button class="popup__form-button popup__form-button-add-a-card" type="submit">Создать</button>
+                        <!----элемент SPAN_2-->
+                        <span class="popup__input-error" id="description-add-a-card-error">dddddddddddddd</span>
+
+                    <button class="popup__form-button " type="submit">Создать</button>
                 </fieldset>
             </form>
         </div>
