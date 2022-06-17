@@ -44,18 +44,18 @@
         <div class="popup__window">
             <button class="popup__close popup__close-edit-profile" type='button'></button>
             <h2 class="popup__title">Редактировать профиль</h2>
-            <form class="popup__form popup__form-edit-profile" name="profile-edit">
+            <form class="popup__form popup__form-edit-profile" name="profile-edit" novalidate>
                 <fieldset class="popup__fieldset">
                 <!--- //////////////////////////////////////////////////////--->
-                    <input class="popup__form-name popup__form-name_edit-profile" id="form-name-edit-profile" type="text" name="form-name"
-                        value="Жак-Ив Кусто" placeholder="Имя">
+                    <input class="popup__form-input popup__form-input_name-edit-profile" id="edit-profile-name" type="text" name="form-name"
+                        value="Жак-Ив Кусто" placeholder="Имя" required minlength="2"; maxlength="40";>
                         <!----элемент SPAN_1-->
-                        <span class="popup__input-error" id="form-name-edit-profile-error">hhhhhhhhhhhh</span>
+                        <span class="popup__span-input-error" id="edit-profile-name-error"></span>
                 <!--- //////////////////////////////////////////////////////--->
-                    <input class="popup__form-description popup__form-description_edit-profile" id="description-edit-profile" type="text"
-                        name="form-description" value="Исследователь океана" placeholder="О себе">
+                    <input class="popup__form-input popup__form-input_description-edit-profile" id="edit-profile-description" type="text"
+                        name="form-description" value="Исследователь океана" placeholder="О себе" required minlength="2"; maxlength="200";>
                         <!----элемент SPAN_2-->
-                        <span class="popup__input-error" id="description-edit-profile-error">dddddddddddddd</span>
+                        <span class="popup__span-input-error" id="edit-profile-description-error"></span>
                     <button class="popup__form-button" type="submit" >Сохранить</button>
                 </fieldset>
             </form>
@@ -66,18 +66,18 @@
         <div class="popup__window">
             <button class="popup__close popup__close-add-a-card" type='button'></button>
             <h2 class="popup__title popup__title-add-a-card">Новое место</h2>
-            <form class="popup__form popup__form-add-a-card" name="profile-edit">
+            <form class="popup__form popup__form-add-a-card" name="profile-edit" novalidate>
                 <fieldset class="popup__fieldset popup__fieldset-add-a-card">
                 <!--- //////////////////////////////////////////////////////--->
-                    <input class="popup__form-name popup__form-name_add-a-card" id="description-add-a-card" type="text" name="form-name"
-                        placeholder="Название">
+                    <input class="popup__form-input popup__form-input_name-add-a-card" id="add-a-card-title" type="text" name="form-name"
+                        placeholder="Название" required minlength="2"; maxlength="30";>
                         <!----элемент SPAN_1-->
-                        <span class="popup__input-error" id="description-add-a-card-error">dddddddddddddd</span>
+                        <span class="popup__span-input-error" id="add-a-card-title-error"></span>
                 <!--- //////////////////////////////////////////////////////--->
-                    <input class="popup__form-description  popup__form-description_add-a-card" id="description-add-a-card" type="text"
-                        name="form-description" placeholder="Ссылка на картинку">
+                    <input class="popup__form-input  popup__form-input_description-add-a-card" id="add-a-card-link" type="url"
+                        name="form-description" placeholder="Ссылка на картинку" required >
                         <!----элемент SPAN_2-->
-                        <span class="popup__input-error" id="description-add-a-card-error">dddddddddddddd</span>
+                        <span class="popup__span-input-error" id="add-a-card-link"></span>
 
                     <button class="popup__form-button " type="submit">Создать</button>
                 </fieldset>
@@ -111,6 +111,7 @@
 
     <script src="./scripts/Cards.js"></script>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validation.js"></script>
 </body>
 
 </html>

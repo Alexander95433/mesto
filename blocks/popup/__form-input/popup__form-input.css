@@ -1,19 +1,12 @@
-.popup__form-name {
+.popup__form-input {
     width: 98%;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
-    margin: 0;
     border: solid 0;
     border-bottom: solid 1px #E5E5E5;
     padding: 0;
     padding-bottom: 13px;
     outline: none;
-}
-
-@media screen and (max-width:650px) {
-    .popup__form-name {
-        margin:0;
-    }
 }

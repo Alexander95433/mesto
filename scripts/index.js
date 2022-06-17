@@ -1,14 +1,14 @@
 
 //для popup-edit-profile// 
-//popup__form-button-edit-profile
+//popup__form-description_add-a-card
 const buttonPopupOn = document.querySelector('.profile__info-button')
 const popupClassOn = document.querySelector('.popup_visible')
 const popupCloseEdit = document.querySelector('.popup__close-edit-profile')
 const popupEdit = document.querySelector('.popup-edit-profile')
 //Заполнение popup form-edit-profile// 
 const popupFormEdit = document.querySelector('.popup__form-edit-profile')
-const formNameEdit = popupFormEdit.querySelector('.popup__form-name_edit-profile')
-const formDescriptionEdit = popupFormEdit.querySelector('.popup__form-description_edit-profile')
+const formNameEdit = popupFormEdit.querySelector('.popup__form-input_name-edit-profile')
+const formDescriptionEdit = popupFormEdit.querySelector('.popup__form-input_description-edit-profile')
 //Заполнение профиля// 
 const profileInfoName = document.querySelector('.profile__info-name')
 const profileInfoDescription = document.querySelector('.profile__info-description')
@@ -21,8 +21,8 @@ const buttonCard = document.querySelector('.profile__picture-cross-box')
 const popupCloseCard = document.querySelector('.popup__close-add-a-card')
 const buttonCreatePopupCard = document.querySelector('.popup__form-button')
 const popupFormCard = document.querySelector('.popup__form-add-a-card')
-const popupFormNameCard = document.querySelector('.popup__form-name_add-a-card')
-const popupFormDescriptionCard = document.querySelector('.popup__form-description_add-a-card')
+const popupFormNameCard = document.querySelector('.popup__form-input_name-add-a-card')
+const popupFormDescriptionCard = document.querySelector('.popup__form-input_description-add-a-card')
 //popup zoom picture cards
 const popupZoomCards = document.querySelector('.popup_zoom-cards')
 const popupZoomCardsPicture = document.querySelector('.popup__picture-zoom-cards ')

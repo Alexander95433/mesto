@@ -1,4 +1,10 @@
-.popup__form-description_edit-profile::placeholder {
+
+
+.popup__form-input_description-edit-profile {
+    margin-top: 29px;
+}
+
+.popup__form-input_description-edit-profile::placeholder {
     font-family: "Inter";
     font-style: normal;
     font-weight: 400;
