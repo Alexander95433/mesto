@@ -71,14 +71,23 @@
     font-weight: 400;
     font-size: 12px;
     line-height: 15px;
+    display: block;
+    min-height: 30px;
 }
-
 
 .popup__form-input_error {
     border-bottom: solid 1px #FF0000;
 
 }
 
+
+.popup__form-button-disabled {
+    background-color: #fff;
+    border: solid 1px rgba(0, 0, 0, 0.2);
+    color: rgba(0, 0, 0, 0.2);
+    cursor: default;
+    
+}
 
 
 

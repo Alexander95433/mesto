@@ -3,8 +3,10 @@
     background-color: transparent;
     background-size: contain;
     position: absolute;
-    bottom: 346px;
-    left: 438px;
+    top: -46px;
+    right: -38px;
+    /*bottom: 346px;
+    left: 438px;*/
     width: 32px;
     height: 32px;
     transition: opacity 0.2s linear;
