@@ -28,7 +28,7 @@ const popupZoomCards = document.querySelector('.popup_zoom-cards')
 const popupZoomCardsPicture = document.querySelector('.popup__picture-zoom-cards ')
 const popupZoomCardsSubtitle = document.querySelector('.popup__subtitle-zoom-cards ')
 const popupCloseZoomCards = document.querySelector('.popup__close_zoom-cards')
-//form-description-edit-profile
+
 //универсальная функция для открытия popup//
 function openPopup(popup) {
     popup.classList.add('popup_visible')
@@ -66,6 +66,8 @@ function openPopupCard() {
 //закрыть popup add-a-card//
 function closePopupCard() {
     closePopup(popupCard)
+    popupFormNameCard.value=''
+    popupFormDescriptionCard.value=''
 }
 
 //подключаю активацию кнопки лайк//
