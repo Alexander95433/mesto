@@ -1,6 +1,5 @@
 
 //для popup-edit-profile// 
-//popup__form-description_add-a-card
 const buttonPopupOn = document.querySelector('.profile__info-button')
 const popupClassOn = document.querySelector('.popup_visible')
 const popupCloseEdit = document.querySelector('.popup__close-edit-profile')
@@ -28,6 +27,9 @@ const popupZoomCards = document.querySelector('.popup_zoom-cards')
 const popupZoomCardsPicture = document.querySelector('.popup__picture-zoom-cards ')
 const popupZoomCardsSubtitle = document.querySelector('.popup__subtitle-zoom-cards ')
 const popupCloseZoomCards = document.querySelector('.popup__close_zoom-cards')
+//popup для закрытия по click на overlay
+const popups = document.querySelectorAll('.popup')
+
 
 //универсальная функция для открытия popup//
 function openPopup(popup) {
@@ -66,15 +68,34 @@ function openPopupCard() {
 //закрыть popup add-a-card//
 function closePopupCard() {
     closePopup(popupCard)
-    popupFormNameCard.value=''
-    popupFormDescriptionCard.value=''
+    popupFormNameCard.value = ''
+    popupFormDescriptionCard.value = ''
 }
+
+//Закрываю popup по click на overlay
+popups.forEach((popupElement) => {
+    popupElement.addEventListener('click', function (evt) {
+        if (evt.target.classList.contains('popup')) {
+            closePopup(popupElement);
+            
+        };
+    })
+})
+//Закрываю popup кнопкой Escape
+popups.forEach((popupElement)=> {
+    document.addEventListener('keydown',(evt)=>{
+        if(evt.key === 'Escape') {
+         closePopup(popupElement) 
+        }
+    })
+  })
+
 
 //подключаю активацию кнопки лайк//
 function handleLikeCard(event) {
     event.target.classList.toggle('element__content-button-like-picture_active')
 }
-//like
+
 //удаляю карточку//
 function deleteCard(event) {
     event.target.closest('.element__card').remove();
@@ -140,6 +161,8 @@ function handleCardFormSubmit(evt) {
     closePopupCard()
 }
 
+
+
 //слушатели//
 buttonPopupOn.addEventListener('click', openPopupEdit)
 popupCloseEdit.addEventListener('click', closePopupEdit)
@@ -148,17 +171,4 @@ buttonCard.addEventListener('click', openPopupCard)
 popupCloseCard.addEventListener('click', closePopupCard)
 popupFormCard.addEventListener('submit', handleCardFormSubmit)
 popupCloseZoomCards.addEventListener('click', zoomPictureCardsOff)
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -8,6 +8,7 @@
     flex-direction: column;
     box-sizing: border-box;
     padding: 35px;
+    z-index: 3;
 }
 
 @media screen and (max-width:650px) {
