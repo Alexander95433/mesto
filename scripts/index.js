@@ -75,15 +75,6 @@ popups.forEach((popupElement) => {
     });
 });
 
-//Закрываю popup по click на overlay
-popups.forEach((popupElement) => {
-    popupElement.addEventListener('mousedown', function (evt) {
-        if (evt.target.classList.contains('popup')) {
-            closePopup(popupElement);
-        };
-    });
-});
-
 //Закрываю popup кнопкой Escape
 function closeByEscape(evt) {
     if (evt.key === 'Escape') {
@@ -132,6 +123,7 @@ function createCard(card) {
     // возвращаю значение склонированной переменной //
     return elementTemplateClone;
 };
+
 
 //расскладываю массив карточек  //
 initialCards.forEach((card) => {
