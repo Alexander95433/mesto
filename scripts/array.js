@@ -1,3 +1,4 @@
+
 const initialCards = [
     {
         name: 'Архыз',
@@ -23,4 +24,17 @@ const initialCards = [
         name: 'Байкал',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
-]
+];
+
+const config = {
+    elementTemplate: '#element-template',
+    likeButton: '.element__content-button-like',
+    deleteIcon: '.element__trash',
+    popupZoomCardsPictureWraper: '.element__picture-wrapper',
+    popupZoomCardsSubtitle: '.popup__subtitle-zoom-cards',
+
+
+};
+
+
+export { initialCards, config };
