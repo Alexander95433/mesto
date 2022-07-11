@@ -1,9 +1,10 @@
 
 import { initialCards, config } from './array.js';
 import CreateCard from './Сard.js';
-//для popup-edit-profile// 
+import FormValidator from './FormValidator.js';
+
+//для popup-edit-profile// resetFormValidation disablSubmit
 const buttonPopupOn = document.querySelector('.profile__info-button');
-const popupClassOn = document.querySelector('.popup_visible');
 const popupCloseEdit = document.querySelector('.popup__close-edit-profile');
 const popupEdit = document.querySelector('.popup-edit-profile');
 const popupFormEdit = document.querySelector('.popup__form-edit-profile');
@@ -16,7 +17,6 @@ const profileInfoDescription = document.querySelector('.profile__info-descriptio
 const popupCard = document.querySelector('.popup-add-a-card');
 const buttonCard = document.querySelector('.profile__picture-cross-box');
 const popupCloseCard = document.querySelector('.popup__close-add-a-card');
-const buttonCreatePopupCard = document.querySelector('.popup__form-button');
 const popupFormCard = document.querySelector('.popup__form-add-a-card');
 const popupFormNameCard = document.querySelector('.popup__form-input_name-add-a-card');
 const popupFormDescriptionCard = document.querySelector('.popup__form-input_description-add-a-card');
@@ -27,9 +27,7 @@ const popupZoomCardsSubtitle = document.querySelector('.popup__subtitle-zoom-car
 const popupCloseZoomCards = document.querySelector('.popup__close_zoom-cards');
 //popup для закрытия по click на overlay
 const popups = document.querySelectorAll('.popup');
-const popupGlobal = document.querySelector('.popup');
 //переменные для template//
-const elementTemplate = document.querySelector('#element-template').content;
 const cardsContainer = document.querySelector('.element');
 
 //универсальная функция для открытия popup//
@@ -43,18 +41,21 @@ function closePopup(popup) {
 };
 
 initialCards.forEach((item) => {
-    const card = new CreateCard(item, config)
+    const card = new CreateCard(item, config, popupZoom)
     const elementCard = card.generateCard()
     document.querySelector('.element').append(elementCard)
 })
 
+//Валидация
+const formValidator = new FormValidator(config);
+formValidator.enableValidation()
 
 //открытие popup// 
 function openPopupEdit() {
     //Синхронизирует поля формы и профиля в случае если из popup вышли через popup__close// 
     formNameEdit.value = profileInfoName.textContent;
     formDescriptionEdit.value = profileInfoDescription.textContent;
-    //resetFormValidation(popupFormEdit, [formNameEdit, formDescriptionEdit], elementsStack);
+    formValidator.resetFormValidation(popupFormEdit, [formNameEdit, formDescriptionEdit], config);
     openPopup(popupEdit);
 };
 
@@ -69,7 +70,7 @@ function handleProfileFormSubmit(evt) {
 //открыть popup add-a-card//
 function openPopupCard() {
     popupFormCard.reset();
-   // resetFormValidation(popupFormCard, [popupFormNameCard, popupFormDescriptionCard], elementsStack);
+    formValidator.resetFormValidation(popupFormCard, [popupFormNameCard, popupFormDescriptionCard], config);
     openPopup(popupCard);
 };
 
@@ -85,6 +86,15 @@ function handleCardFormSubmit(evt) {
     cardsContainer.prepend(nevCardElement);
     popupFormCard.reset();
     closePopup(popupCard)
+};
+
+//Привязываю карточки к popup zoom
+function popupZoom(card) {
+    popupZoomCardsPicture.src = card.link;
+    popupZoomCardsPicture.alt = card.name;
+    popupZoomCardsSubtitle.textContent = card.name;
+    //Открываю popup zoom //
+    popupZoomCards.classList.add('popup_visible');
 };
 
 //Закрываю popup по click на overlay
@@ -105,23 +115,12 @@ popups.forEach((popupElement) => {
     });
 });
 
-
-
-
-
-
-
-
-
-
-
-
 //слушатели//
 buttonPopupOn.addEventListener('click', openPopupEdit);
 popupCloseEdit.addEventListener('click', () => closePopup(popupEdit));
 popupFormEdit.addEventListener('submit', handleProfileFormSubmit);
 buttonCard.addEventListener('click', openPopupCard);
-popupCloseCard.addEventListener('click',  ()=> closePopup(popupCard));
+popupCloseCard.addEventListener('click', () => closePopup(popupCard));
 popupFormCard.addEventListener('submit', handleCardFormSubmit);
-popupCloseZoomCards.addEventListener('click', zoomPictureCardsOff);
+popupCloseZoomCards.addEventListener('click', () => closePopup(popupZoomCards));
 

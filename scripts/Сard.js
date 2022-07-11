@@ -1,14 +1,11 @@
-//popup zoom picture cards
-const popupZoomCards = document.querySelector('.popup_zoom-cards');
-const popupZoomCardsPicture = document.querySelector('.popup__picture-zoom-cards');
-const popupZoomCardsSubtitle = document.querySelector('.popup__subtitle-zoom-cards');
-
 class CreateCard {
-    constructor(item, config) {
+    constructor(item, config, popupZoom) {
         this._config = config;
         this._name = item.name;
-        this._link = item.link;
         this._alt = item.alt;
+        this._link = item.link;
+        this._popupZoom = popupZoom;
+        this._item = item;
     };
 
     //Клонирование разметки template
@@ -23,15 +20,6 @@ class CreateCard {
     //функция удаления карточки
     _deleteCard(event) {
         event.target.closest('.element__card').remove();
-    };
-
-    //Привязываю карточки к popup zoom
-    _popupZoom() {
-        popupZoomCardsPicture.src = this._link;
-        popupZoomCardsPicture.alt = this._alt;
-        popupZoomCardsSubtitle.textContent = this._name;
-        //Открываю popup zoom //
-        popupZoomCards.classList.add('popup_visible');;
     };
 
     //Заполнение карточки
@@ -56,7 +44,7 @@ class CreateCard {
             };
         });
         //открыть popup с увеличенным изображением
-        this._element.querySelector(this._config.popupZoomCardsPictureWraper).addEventListener('click', () => this._popupZoom());
+        this._element.querySelector(this._config.popupZoomCardsPictureWraper).addEventListener('click', () => this._popupZoom(this._item));
     };
 };
 export default CreateCard;
