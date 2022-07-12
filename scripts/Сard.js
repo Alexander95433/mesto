@@ -1,4 +1,4 @@
-class CreateCard {
+class Card {
     constructor(item, config, popupZoom) {
         this._config = config;
         this._name = item.name;
@@ -25,11 +25,12 @@ class CreateCard {
     //Заполнение карточки
     generateCard() {
         this._element = this._getTemplate();
+        this._cardImage = this._element.querySelector('.element__picture')
         this._setEventListeners();
 
-        this._element.querySelector('.element__picture').src = this._link;
+        this._cardImage.src = this._link;
         this._element.querySelector('.element__content-title').textContent = this._name;
-        this._element.querySelector('.element__picture').alt = this._name;
+        this._cardImage.alt = this._name;
         return this._element;
     };
 
@@ -47,4 +48,4 @@ class CreateCard {
         this._element.querySelector(this._config.popupZoomCardsPictureWraper).addEventListener('click', () => this._popupZoom(this._item));
     };
 };
-export default CreateCard;
+export default Card;

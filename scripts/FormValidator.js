@@ -15,7 +15,7 @@ class FormValidator {
         fieldsetList.forEach((fieldsetElement) => this._addListener(fieldsetElement));
     };
 
-    //Добавляю слушателей к каждому input
+    //Добавляю слушателей к каждому input  
     _addListener() {
         this._disablSubmit();
         this._inputList.forEach((inputElement) => {
