@@ -1,28 +1,27 @@
 class FormValidator {
-    constructor(config) {
+    constructor(config, formElement) {
         this.config = config;
+        this._formElement = formElement;
+        this._inputList = Array.from(this._formElement.querySelectorAll(`${this.config.inputSelector}`));
+        this._buttonElement = this._formElement.querySelector(`${this.config.submitButtonSelector}`);
     };
-    //Подключаю обработчик ко всем form
+
+    //Подключаю обработчик ко всем form formList
     enableValidation() {
-        const formList = Array.from(document.querySelectorAll(`${this.config.formSelector}`));
-        formList.forEach((formElement) => {
-            formElement.addEventListener('submit', (evt) => evt.preventDefault());
-            this._addListener(formElement);
-            //Работает с филдсетами  
-            const fieldsetList = Array.from(formElement.querySelectorAll(`${this.config.formFieldset}`))
-            fieldsetList.forEach((fieldsetElement) => this._addListener(fieldsetElement));
-        });
+        this._formElement.addEventListener('submit', (evt) => evt.preventDefault());
+        this._addListener();
+        //Работает с филдсетами  
+        const fieldsetList = Array.from(this._formElement.querySelectorAll(`${this.config.formFieldset}`))
+        fieldsetList.forEach((fieldsetElement) => this._addListener(fieldsetElement));
     };
 
     //Добавляю слушателей к каждому input
-    _addListener(formElement) {
-        const inputList = Array.from(formElement.querySelectorAll(`${this.config.inputSelector}`));
-        const buttonElement = formElement.querySelector(`${this.config.submitButtonSelector}`);
-        this._disablSubmit(inputList, buttonElement);
-        inputList.forEach((inputElement) => {
+    _addListener() {
+        this._disablSubmit();
+        this._inputList.forEach((inputElement) => {
             inputElement.addEventListener('input', () => {
-                this._checksValidation(formElement, inputElement, inputList);
-                this._disablSubmit(inputList, buttonElement);
+                this._checksValidation(inputElement);
+                this._disablSubmit();
             });
         });
     };
@@ -33,24 +32,22 @@ class FormValidator {
     };
 
     //Проверяю валидны ли все поля ввода , и после этого включаю кнопку submit
-    _disablSubmit(inputList, buttonElement) {
-        this._checkingInputValidity(inputList) ? this._disableSubmitButton(buttonElement) : this._enableSubmitButton(buttonElement);
+    _disablSubmit() {
+        this._checkingInputValidity(this._inputList) ? this._disableSubmitButton() : this._enableSubmitButton();
     };
 
     //Проверил валидацию
-    _checksValidation(formElement, inputElement) {
-        const buttonElement = formElement.querySelector(`${this.config.submitButtonSelector}`);
+    _checksValidation(inputElement) {
         if (!inputElement.validity.valid) {
-            this._addErrorClass(formElement, inputElement, inputElement.validationMessage, buttonElement);
+            this._addErrorClass(inputElement, inputElement.validationMessage);
         } else {
-            this._removeErrorClass(formElement, inputElement, buttonElement);
+            this._removeErrorClass(inputElement);
         }
     };
 
     //Добавил класс ошибки
-    _addErrorClass(formElement, inputElement, errorMessege) {
-        const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-        //const buttonElement = formElement.querySelector(`${this.config.submitButtonSelector}`);
+    _addErrorClass(inputElement, errorMessege) {
+        const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
         errorElement.textContent = errorMessege;
         inputElement.classList.add(`${this.config.inputErrorClass}`);
         errorElement.classList.add(`${this.config.errorClass}`);
@@ -58,26 +55,24 @@ class FormValidator {
     };
 
     //Убрал класс ошибки
-    _removeErrorClass(formElement, inputElement) {
-        const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+    _removeErrorClass(inputElement) {
+        const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
         errorElement.hidden = true;
         errorElement.textContent = '';
         inputElement.classList.remove(`${this.config.inputErrorClass}`);
     };
 
     //Включаю и выключаю кнопку submit
-    _disableSubmitButton(buttonElement) { buttonElement.disabled = true; };
-    _enableSubmitButton(buttonElement) { buttonElement.disabled = false; };
+    _disableSubmitButton() { this._buttonElement.disabled = true; };
+    _enableSubmitButton() { this._buttonElement.disabled = false; };
 
     //Сбрасываю ошибки с полей input и ставлю неактивный статус submit button
-    resetFormValidation(formElement, inputList) {
-        const buttonElement = formElement.querySelector(`${this.config.submitButtonSelector}`);
-        inputList.forEach((inputElement) => {
-            this._removeErrorClass(formElement, inputElement, buttonElement);
+    resetFormValidation() {
+        this._inputList.forEach((inputElement) => {
+            this._removeErrorClass(inputElement);
         });
-        this._disableSubmitButton(buttonElement);
+        this._disableSubmitButton();
     };
-
 };
 
 export default FormValidator;

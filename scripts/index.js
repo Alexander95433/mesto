@@ -3,7 +3,7 @@ import { initialCards, config } from './array.js';
 import CreateCard from './Сard.js';
 import FormValidator from './FormValidator.js';
 
-//для popup-edit-profile// resetFormValidation disablSubmit
+//для popup-edit-profile// resetFormValidation disablSubmit popup__form-add-a-card
 const buttonPopupOn = document.querySelector('.profile__info-button');
 
 const popupCloseEdit = document.querySelector('.popup__close-edit-profile');
@@ -54,16 +54,20 @@ initialCards.forEach((item) => {
     document.querySelector('.element').append(elementCard)
 })
 
+
 //Валидация
-const formValidator = new FormValidator(config);
-formValidator.enableValidation()
+const formValidatorFormEdit = new FormValidator(config, popupFormEdit);
+formValidatorFormEdit.enableValidation()
+//Валидация
+const formValidatorFormCard = new FormValidator(config, popupFormCard);
+formValidatorFormCard.enableValidation()
 
 //открытие popup// 
 function openPopupEdit() {
     //Синхронизирует поля формы и профиля в случае если из popup вышли через popup__close// 
     formNameEdit.value = profileInfoName.textContent;
     formDescriptionEdit.value = profileInfoDescription.textContent;
-    formValidator.resetFormValidation(popupFormEdit, [formNameEdit, formDescriptionEdit], config);
+    formValidatorFormEdit.resetFormValidation();
     openPopup(popupEdit);
 };
 
@@ -78,7 +82,7 @@ function handleProfileFormSubmit(evt) {
 //открыть popup add-a-card//
 function openPopupCard() {
     popupFormCard.reset();
-    formValidator.resetFormValidation(popupFormCard, [popupFormNameCard, popupFormDescriptionCard], config);
+    formValidatorFormCard.resetFormValidation();
     openPopup(popupCard);
 };
 
