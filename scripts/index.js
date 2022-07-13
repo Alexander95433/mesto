@@ -107,7 +107,7 @@ function popupZoom(card) {
     popupZoomCardsPicture.alt = card.name;
     popupZoomCardsSubtitle.textContent = card.name;
     //Открываю popup zoom //
-    popupZoomCards.classList.add('popup_visible');
+    openPopup(popupZoomCards)
 };
 
 //Закрываю popup по click на overlay
