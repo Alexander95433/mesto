@@ -2,7 +2,6 @@ class Card {
     constructor(item, config, popupZoom) {
         this._config = config;
         this._name = item.name;
-        this._alt = item.alt;
         this._link = item.link;
         this._popupZoom = popupZoom;
         this._item = item;
@@ -34,6 +33,7 @@ class Card {
         return this._element;
     };
 
+
     //Слушатели
     _setEventListeners() {
         //удаление карточки
@@ -46,6 +46,7 @@ class Card {
         });
         //открыть popup с увеличенным изображением
         this._element.querySelector(this._config.popupZoomCardsPictureWraper).addEventListener('click', () => this._popupZoom(this._item));
+        //добавить слушутеля к кнопке submit popup add a card
     };
 };
 export default Card;
