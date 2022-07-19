@@ -1,5 +1,5 @@
 class Card {
-    constructor(item, config, popupZoom) {
+    constructor(item, config, {popupZoom}) {
         this._config = config;
         this._name = item.name;
         this._link = item.link;

@@ -29,7 +29,7 @@ const config = {
     deleteIcon: '.element__trash',
     popupZoomCardsPictureWraper: '.element__picture-wrapper',
     popupZoomCardsSubtitle: '.popup__subtitle-zoom-cards',
-
+    popups: '.popup',
     //для класса FormValidator
     formSelector: '.popup__form',
     formFieldset: '.popup__fieldset',
