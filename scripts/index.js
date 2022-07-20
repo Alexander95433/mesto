@@ -2,6 +2,8 @@ import {
     buttonPopupOn, popupEdit, popupFormEdit, formNameEdit, formDescriptionEdit, profileInfoName, profileInfoDescription, popupCard,
     buttonCard, popupFormCard, popupFormNameCard, popupFormDescriptionCard, cardsContainer, config, initialCards
 } from './utils/constants-array.js';
+import UserInfo from './components/UserInfo.js';
+import PopupWithForm from './components/PopupWithForm.js';
 import PopupWithImage from './components/PopupWithImage.js';
 import Card from './components/Сard.js';
 import FormValidator from './components/FormValidator.js';
@@ -23,30 +25,6 @@ const defaultCards = new Section({
 }, cardsContainer);
 defaultCards.renderItems();
 
-//Добавить новую карточку//
-function handleCardFormSubmit(evt) {
-    evt.preventDefault();
-    const newCards = new Section({
-        data: [{
-            name: popupFormNameCard.value,
-            link: popupFormDescriptionCard.value,
-        }], renderer: (item) => {
-            const card = new Card(item, config, {
-                popupZoom: () => {
-                    const popupWithImage = new PopupWithImage('.popup_zoom-cards')
-                    popupWithImage.open(item)
-                    popupWithImage.setEventListeners()
-                }
-            })
-            const cardElement = card.generateCard()
-            newCards.setItem(cardElement)
-        }
-    }, cardsContainer);
-    newCards.renderItems();
-    popupFormCard.reset();
-    //closePopup(popupCard)
-};
-
 //Подключить к валидации универсальные формы
 const formValidators = {};
 const connectFormsToValidation = (config) => {
@@ -58,39 +36,69 @@ const connectFormsToValidation = (config) => {
         formValidators[formName] = validator;
     });
 };
-connectFormsToValidation(config)
+connectFormsToValidation(config);
+
+//заполняет поля информации о профиле
+const userInfo = new UserInfo({
+    userName: '.profile__info-name',
+    description: ".profile__info-description"
+});
+
+///обработчик кнопки submit редактирования профиля
+const popupWithFormProfile = new PopupWithForm(config, {
+    handleProfileFormSubmit: (inputElements) => {
+        //заполнил полья данных о пользователе
+        userInfo.setUserInfo(inputElements);
+        popupWithFormProfile.close();
+    }
+}, '.popup-edit-profile')
+popupWithFormProfile.setEventListeners()
+
+///Добваляет новую карточку и открывает zoom popup
+const popupWithFormCard = new PopupWithForm(config, {
+    handleProfileFormSubmit: (inputElements) => {
+        const newCards = new Section({
+            data: [inputElements],
+            renderer: (item) => {
+                const card = new Card(item, config, {
+                    popupZoom: () => {
+                        const popupWithImage = new PopupWithImage('.popup_zoom-cards')
+                        popupWithImage.open(item)
+                        popupWithImage.setEventListeners()
+                    }
+                })
+                const cardElement = card.generateCard()
+                newCards.setItem(cardElement)
+            }
+        }, cardsContainer);
+        newCards.renderItems();
+        popupWithFormCard.close()
+    }
+}, '.popup-add-a-card')
+popupWithFormCard.setEventListeners()
+
 
 //открытие popup// 
 function openPopupEdit() {
-    //Синхронизирует поля формы и профиля в случае если из popup вышли через popup__close// 
-    formNameEdit.value = profileInfoName.textContent;
-    formDescriptionEdit.value = profileInfoDescription.textContent;
+    //Синхронизирует поля формы и профиля в случае если из popup вышли через не через submit
+    formNameEdit.value = userInfo.getUserInfo().name;
+    formDescriptionEdit.value = userInfo.getUserInfo().description;
     formValidators['profile-edit'].resetFormValidation();
-    openPopup(popupEdit);
+    popupWithFormProfile.open();
 };
 
-//Кнопка "сохранить" в popup//
-function handleProfileFormSubmit(evt) {
-    evt.preventDefault();
-    profileInfoName.textContent = formNameEdit.value;
-    profileInfoDescription.textContent = formDescriptionEdit.value;
-    //closePopup(popupEdit);
-};
 
 //открыть popup add-a-card//
 function openPopupCard() {
-    popupFormCard.reset();
     //Валидация формы редактирования профиля
     formValidators['add-a-card'].resetFormValidation();
-    openPopup(popupCard);
+    popupWithFormCard.open();
 };
 
 
 //слушатели//
 buttonPopupOn.addEventListener('click', openPopupEdit);
-popupFormEdit.addEventListener('submit', handleProfileFormSubmit);
 buttonCard.addEventListener('click', openPopupCard);
-popupFormCard.addEventListener('submit', handleCardFormSubmit);
 
 
 

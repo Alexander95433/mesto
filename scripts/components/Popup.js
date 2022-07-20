@@ -12,7 +12,7 @@ export default class Popup {
     //универсальная функция для закрытия popup//
     close() {
         this._popupSelector.classList.remove('popup_visible');
-        document.removeEventListener('keydown', this._handleEscClose)
+        document.removeEventListener('keydown', this._handleEscClose.bind(this))
     };
 
     //Закрываю popup кнопкой Escape
@@ -21,10 +21,6 @@ export default class Popup {
             this.close()
         };
     };
-
-
-
-
 
     //Закрываю popup по click на overlay
     setEventListeners() {
