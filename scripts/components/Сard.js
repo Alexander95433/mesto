@@ -1,9 +1,9 @@
 class Card {
-    constructor(item, config, {popupZoom}) {
+    constructor(item, config, {handleCardClick}) {
         this._config = config;
         this._name = item.name;
         this._link = item.link;
-        this._popupZoom = popupZoom;
+        this._handleCardClick = handleCardClick;
         this._item = item;
     };
 
@@ -45,7 +45,7 @@ class Card {
             };
         });
         //открыть popup с увеличенным изображением
-        this._element.querySelector(this._config.popupZoomCardsPictureWraper).addEventListener('click', () => this._popupZoom(this._item));
+        this._element.querySelector(this._config.popupZoomCardsPictureWraper).addEventListener('click', () => this._handleCardClick(this._item));
         //добавить слушутеля к кнопке submit popup add a card
     };
 };

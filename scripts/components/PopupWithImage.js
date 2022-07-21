@@ -5,7 +5,7 @@ export default class PopupWithImage extends Popup {
     constructor(popupSelector) {
         super(popupSelector);
     }
-
+//дополняю родительский метод open  вставляет в попап картинку с src изображения и подписью к картинке
     open(card) {
         popupZoomCardsPicture.src = card.link;
         popupZoomCardsPicture.alt = card.name;

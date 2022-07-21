@@ -9,11 +9,11 @@ import Card from './components/Сard.js';
 import FormValidator from './components/FormValidator.js';
 import Section from './components/Section .js';
 
-//Добавить исходный массив с карточками
+//Добавить исходный массив с карточками и подключаю к ним popup zoom
 const defaultCards = new Section({
     data: initialCards, renderer: (item) => {
         const card = new Card(item, config, {
-            popupZoom: () => {
+            handleCardClick: () => {
                 const popupWithImage = new PopupWithImage('.popup_zoom-cards')
                 popupWithImage.open(item)
                 popupWithImage.setEventListeners()
@@ -54,14 +54,14 @@ const popupWithFormProfile = new PopupWithForm(config, {
 }, '.popup-edit-profile')
 popupWithFormProfile.setEventListeners()
 
-///Добваляет новую карточку и открывает zoom popup
+///Добваляет новую карточку и подключаю к нией popup zoom
 const popupWithFormCard = new PopupWithForm(config, {
     handleProfileFormSubmit: (inputElements) => {
         const newCards = new Section({
             data: [inputElements],
             renderer: (item) => {
                 const card = new Card(item, config, {
-                    popupZoom: () => {
+                    handleCardClick: () => {
                         const popupWithImage = new PopupWithImage('.popup_zoom-cards')
                         popupWithImage.open(item)
                         popupWithImage.setEventListeners()
