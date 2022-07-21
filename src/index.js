@@ -1,6 +1,6 @@
+import './page/index.css';
 import {
-    buttonPopupOn, popupEdit, popupFormEdit, formNameEdit, formDescriptionEdit, profileInfoName, profileInfoDescription, popupCard,
-    buttonCard, popupFormCard, popupFormNameCard, popupFormDescriptionCard, cardsContainer, config, initialCards
+    buttonPopupOn, formNameEdit, formDescriptionEdit,buttonCard,cardsContainer, config, initialCards
 } from './utils/constants-array.js';
 import UserInfo from './components/UserInfo.js';
 import PopupWithForm from './components/PopupWithForm.js';
