@@ -8,11 +8,7 @@ class FormValidator {
 
     //Подключаю обработчик ко всем form formList
     enableValidation() {
-        this._formElement.addEventListener('submit', (evt) => evt.preventDefault());
         this._addListener();
-        //Работает с филдсетами  
-        const fieldsetList = Array.from(this._formElement.querySelectorAll(`${this.config.formFieldset}`))
-        fieldsetList.forEach((fieldsetElement) => this._addListener(fieldsetElement));
     };
 
     //Добавляю слушателей к каждому input  

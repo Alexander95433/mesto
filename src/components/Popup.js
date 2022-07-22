@@ -1,18 +1,19 @@
 export default class Popup {
     constructor(popupSelector) {
-        this._popupSelector = document.querySelector(popupSelector);
+        this._popup = document.querySelector(popupSelector);
+        this._handleEscClose = this._handleEscClose.bind(this);
     };
 
     //универсальная функция для открытия popup//
     open() {
-        this._popupSelector.classList.add('popup_visible');
-        document.addEventListener('keydown', this._handleEscClose.bind(this))
+        this._popup.classList.add('popup_visible');
+        document.addEventListener('keydown', this._handleEscClose)
     };
 
     //универсальная функция для закрытия popup//
     close() {
-        this._popupSelector.classList.remove('popup_visible');
-        document.removeEventListener('keydown', this._handleEscClose.bind(this))
+        this._popup.classList.remove('popup_visible');
+        document.removeEventListener('keydown', this._handleEscClose)
     };
 
     //Закрываю popup кнопкой Escape
@@ -24,7 +25,7 @@ export default class Popup {
 
     //Закрываю popup по click на overlay
     setEventListeners() {
-        this._popupSelector.addEventListener('mousedown', (evt) => {
+        this._popup.addEventListener('mousedown', (evt) => {
             if (evt.target.classList.contains('popup_visible')) {
                 this.close();
             };

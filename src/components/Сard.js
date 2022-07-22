@@ -26,6 +26,7 @@ class Card {
         this._element = this._getTemplate();
         this._cardImage = this._element.querySelector('.element__picture')
         this._setEventListeners();
+        this._isCardLiked()
 
         this._cardImage.src = this._link;
         this._element.querySelector('.element__content-title').textContent = this._name;
@@ -33,20 +34,19 @@ class Card {
         return this._element;
     };
 
+    _isCardLiked() {
+        //like
+        this._element.querySelector(this._config.likeButton).addEventListener('click', (evt) => {
+                evt.target.classList.toggle('element__content-button-like-picture_active')
+        });
+    };
 
     //Слушатели
     _setEventListeners() {
         //удаление карточки
         this._element.querySelector(this._config.deleteIcon).addEventListener('click', this._deleteCard);
-        //like
-        this._element.querySelector(this._config.likeButton).addEventListener('click', (evt) => {
-            if (evt.target.classList.contains('element__content-button-like')) {
-                evt.target.classList.toggle('element__content-button-like-picture_active')
-            };
-        });
         //открыть popup с увеличенным изображением
         this._element.querySelector(this._config.popupZoomCardsPictureWraper).addEventListener('click', () => this._handleCardClick(this._item));
-        //добавить слушутеля к кнопке submit popup add a card
     };
 };
 export default Card;

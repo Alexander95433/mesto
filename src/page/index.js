@@ -1,28 +1,35 @@
-import './page/index.css';
+import './index.css';
 import {
-    buttonPopupOn, formNameEdit, formDescriptionEdit,buttonCard,cardsContainer, config, initialCards
-} from './utils/constants-array.js';
-import UserInfo from './components/UserInfo.js';
-import PopupWithForm from './components/PopupWithForm.js';
-import PopupWithImage from './components/PopupWithImage.js';
-import Card from './components/Сard.js';
-import FormValidator from './components/FormValidator.js';
-import Section from './components/Section .js';
+    buttonPopupOn, formNameEdit, formDescriptionEdit, buttonCard, cardsContainer, config, initialCards
+} from '../utils/constants-array';
+import UserInfo from '../components/UserInfo.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import Card from '../components/Сard.js';
+import FormValidator from '../components/FormValidator.js';
+import Section from '../components/Section .js';
 
-//Добавить исходный массив с карточками и подключаю к ним popup zoom
+// класс для открытия popup zoom
+const popupWithImage = new PopupWithImage('.popup_zoom-cards')
+// создание новой карточки
+function createCard(item) {
+    const card = new Card(item, config, {
+        handleCardClick: () => {
+            popupWithImage.open(item)
+            popupWithImage.setEventListeners()
+        }
+    });
+    //сгенерировал, добавил на страницу 
+    const cardElement = card.generateCard();
+    defaultCards.addItem(cardElement);
+};
+
+//Добавить исходный массив с карточками и подключаю к ним popup zoom 
 const defaultCards = new Section({
     data: initialCards, renderer: (item) => {
-        const card = new Card(item, config, {
-            handleCardClick: () => {
-                const popupWithImage = new PopupWithImage('.popup_zoom-cards')
-                popupWithImage.open(item)
-                popupWithImage.setEventListeners()
-            }
-        });
-        const cardElement = card.generateCard();
-        defaultCards.setItem(cardElement);
+        createCard(item)
     }
-}, cardsContainer);
+}, '.element');
 defaultCards.renderItems();
 
 //Подключить к валидации универсальные формы
@@ -43,6 +50,8 @@ const userInfo = new UserInfo({
     userName: '.profile__info-name',
     description: ".profile__info-description"
 });
+// объект с данными пользователя
+const userData = userInfo.getUserInfo()
 
 ///обработчик кнопки submit редактирования профиля
 const popupWithFormProfile = new PopupWithForm(config, {
@@ -57,32 +66,20 @@ popupWithFormProfile.setEventListeners()
 ///Добваляет новую карточку и подключаю к нией popup zoom
 const popupWithFormCard = new PopupWithForm(config, {
     handleProfileFormSubmit: (inputElements) => {
-        const newCards = new Section({
-            data: [inputElements],
-            renderer: (item) => {
-                const card = new Card(item, config, {
-                    handleCardClick: () => {
-                        const popupWithImage = new PopupWithImage('.popup_zoom-cards')
-                        popupWithImage.open(item)
-                        popupWithImage.setEventListeners()
-                    }
-                })
-                const cardElement = card.generateCard()
-                newCards.setItem(cardElement)
-            }
-        }, cardsContainer);
-        newCards.renderItems();
+        //создал разметку, добавил на страницу
+        createCard(inputElements)
+        //закрыл popup
         popupWithFormCard.close()
     }
-}, '.popup-add-a-card')
+}, '.popup-add-a-card');
 popupWithFormCard.setEventListeners()
 
 
 //открытие popup// 
 function openPopupEdit() {
     //Синхронизирует поля формы и профиля в случае если из popup вышли через не через submit
-    formNameEdit.value = userInfo.getUserInfo().name;
-    formDescriptionEdit.value = userInfo.getUserInfo().description;
+    formNameEdit.value = userData.name;
+    formDescriptionEdit.value = userData.description;
     formValidators['profile-edit'].resetFormValidation();
     popupWithFormProfile.open();
 };
@@ -99,6 +96,3 @@ function openPopupCard() {
 //слушатели//
 buttonPopupOn.addEventListener('click', openPopupEdit);
 buttonCard.addEventListener('click', openPopupCard);
-
-
-

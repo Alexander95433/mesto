@@ -2,11 +2,11 @@ export default class Section {
     constructor({ data, renderer }, cardsContainer) {
         this._items = data;
         this._renderer = renderer;
-        this._cardsContainer = cardsContainer;
+        this._cardsContainer = document.querySelector(cardsContainer);
     };
 
     //Разложить массив карточек 
-    setItem(element) { 
+    addItem(element) { 
         this._cardsContainer.prepend(element)
     };
     

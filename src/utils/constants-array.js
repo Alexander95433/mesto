@@ -23,7 +23,7 @@ const popups = document.querySelectorAll('.popup');
 const cardsContainer = document.querySelector('.element');
 
 const config = {
-    //Для класса CreateCard
+    //Для класса CreateCard popupZoomCardsPicture cardsContainer
     elementTemplate: '#element-template',
     likeButton: '.element__content-button-like',
     deleteIcon: '.element__trash',
