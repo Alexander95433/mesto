@@ -16,18 +16,22 @@ function createCard(item) {
     const card = new Card(item, config, {
         handleCardClick: () => {
             popupWithImage.open(item)
-            popupWithImage.setEventListeners()
         }
     });
     //сгенерировал, добавил на страницу 
     const cardElement = card.generateCard();
-    defaultCards.addItem(cardElement);
+    //defaultCards.addItem(cardElement);
+    popupWithImage.setEventListeners()
+    return cardElement
 };
 
-//Добавить исходный массив с карточками и подключаю к ним popup zoom 
+//Добавить исходный массив с карточками и подключаю к ним popup zoom    
 const defaultCards = new Section({
     data: initialCards, renderer: (item) => {
+        //создал разметку
         createCard(item)
+        //добавил на страницу
+        defaultCards.addItem(createCard(item))
     }
 }, '.element');
 defaultCards.renderItems();
@@ -50,9 +54,7 @@ const userInfo = new UserInfo({
     userName: '.profile__info-name',
     description: ".profile__info-description"
 });
-// объект с данными пользователя
-const userData = userInfo.getUserInfo()
-
+ 
 ///обработчик кнопки submit редактирования профиля
 const popupWithFormProfile = new PopupWithForm(config, {
     handleProfileFormSubmit: (inputElements) => {
@@ -66,8 +68,10 @@ popupWithFormProfile.setEventListeners()
 ///Добваляет новую карточку и подключаю к нией popup zoom
 const popupWithFormCard = new PopupWithForm(config, {
     handleProfileFormSubmit: (inputElements) => {
-        //создал разметку, добавил на страницу
+        //создал разметку
         createCard(inputElements)
+        //добавил на страницу
+        defaultCards.addItem(createCard(inputElements))
         //закрыл popup
         popupWithFormCard.close()
     }
@@ -77,6 +81,8 @@ popupWithFormCard.setEventListeners()
 
 //открытие popup// 
 function openPopupEdit() {
+    // объект с данными пользователя
+    const userData = userInfo.getUserInfo()
     //Синхронизирует поля формы и профиля в случае если из popup вышли через не через submit
     formNameEdit.value = userData.name;
     formDescriptionEdit.value = userData.description;

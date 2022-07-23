@@ -1,5 +1,5 @@
 class Card {
-    constructor(item, config, {handleCardClick}) {
+    constructor(item, config, { handleCardClick }) {
         this._config = config;
         this._name = item.name;
         this._link = item.link;
@@ -26,7 +26,6 @@ class Card {
         this._element = this._getTemplate();
         this._cardImage = this._element.querySelector('.element__picture')
         this._setEventListeners();
-        this._isCardLiked()
 
         this._cardImage.src = this._link;
         this._element.querySelector('.element__content-title').textContent = this._name;
@@ -34,12 +33,9 @@ class Card {
         return this._element;
     };
 
-    _isCardLiked() {
-        //like
-        this._element.querySelector(this._config.likeButton).addEventListener('click', (evt) => {
-                evt.target.classList.toggle('element__content-button-like-picture_active')
-        });
-    };
+    _isCardLiked(evt) {
+        evt.target.classList.toggle('element__content-button-like-picture_active')
+    }
 
     //Слушатели
     _setEventListeners() {
@@ -47,6 +43,8 @@ class Card {
         this._element.querySelector(this._config.deleteIcon).addEventListener('click', this._deleteCard);
         //открыть popup с увеличенным изображением
         this._element.querySelector(this._config.popupZoomCardsPictureWraper).addEventListener('click', () => this._handleCardClick(this._item));
+        //like
+        this._element.querySelector(this._config.likeButton).addEventListener('click', this._isCardLiked);
     };
 };
 export default Card;
