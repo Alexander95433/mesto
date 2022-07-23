@@ -4,7 +4,7 @@ export default class Section {
         this._renderer = renderer;
         this._cardsContainer = document.querySelector(cardsContainer);
     };
-
+  
     //Разложить массив карточек 
     addItem(element) { 
         this._cardsContainer.prepend(element)
