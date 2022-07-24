@@ -10,7 +10,9 @@ import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section .js';
 
 // класс для открытия popup zoom
-const popupWithImage = new PopupWithImage('.popup_zoom-cards')
+const popupWithImage = new PopupWithImage('.popup_zoom-cards');
+popupWithImage.setEventListeners();
+
 // создание новой карточки
 function createCard(item) {
     const card = new Card(item, config, {
@@ -18,10 +20,8 @@ function createCard(item) {
             popupWithImage.open(item)
         }
     });
-    //сгенерировал, добавил на страницу 
+    //сгенерировал 
     const cardElement = card.generateCard();
-    //defaultCards.addItem(cardElement);
-    popupWithImage.setEventListeners()
     return cardElement
 };
 
@@ -54,7 +54,7 @@ const userInfo = new UserInfo({
     userName: '.profile__info-name',
     description: ".profile__info-description"
 });
- 
+
 ///обработчик кнопки submit редактирования профиля
 const popupWithFormProfile = new PopupWithForm(config, {
     handleProfileFormSubmit: (inputElements) => {

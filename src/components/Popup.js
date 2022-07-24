@@ -23,8 +23,9 @@ export default class Popup {
         };
     };
 
-    //Закрываю popup по click на overlay
+    
     setEventListeners() {
+        //Закрываю popup по click на overlay
         this._popup.addEventListener('mousedown', (evt) => {
             if (evt.target.classList.contains('popup_visible')) {
                 this.close();
