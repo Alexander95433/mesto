@@ -41,7 +41,7 @@
 - **API сервера Яндекс.Практикум**
 - **Webpack**
 ### Инструкция для работы с проектом:
-**Для рабботы понадобиться установить git bash и NodeJS & npm** 
+**Для рабботы понадобиться установить git bash, NodeJS & npm** 
 ```
 git clone git@github.com:VeraChernushina/mesto.git
   cd mesto
