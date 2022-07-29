@@ -50,5 +50,5 @@ git clone git@github.com:VeraChernushina/mesto.git
   npm run deploy
 
 ```
-**Ссылка** на страницу : https://alexander95433.github.io/mesto/index.html
+**Ссылка** на страницу :  https://alexander95433.github.io/mesto/dist/index.html
 
