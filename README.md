@@ -39,7 +39,7 @@
 - **Минификация и транспиляция JS Babel**
 - **API сервера Яндекс.Практикум**
 - **Webpack**
-## Инструкция для работы с проектом:
+### Инструкция для работы с проектом:
 ```
 git clone git@github.com:VeraChernushina/mesto.git
   cd mesto
@@ -47,7 +47,7 @@ git clone git@github.com:VeraChernushina/mesto.git
   npm run build
   npm run dev
 ```
-## Деплой проекта в Github Pages:
+### Деплой проекта в Github Pages:
 ```
   npm run deploy
 
