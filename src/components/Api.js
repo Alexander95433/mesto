@@ -1,3 +1,5 @@
+import { data } from "autoprefixer";
+
 export default class Api {
     constructor(options) {
         this._host = options.host;
@@ -41,9 +43,22 @@ export default class Api {
                 headers: this._headers
             })
             .then(res => this._responseAnalysis(res))
-    }
+    };
 
+    //Добавление новой карточки на сервер
+    sendNewCard(data) {
+        return fetch(`${this._host}/cards`, {
+            method: 'POST',
+            headers: this._headers,
+            body: JSON.stringify({
+                name: data.name,
+                link: data.link,
+            })
+        })
+            .then(res => this._responseAnalysis(res))
+    };
 
+   
 
     ////////////////////////////////////////////
 };

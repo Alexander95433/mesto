@@ -5,6 +5,8 @@ class Card {
         this._link = item.link;
         this._handleCardClick = handleCardClick;
         this._item = item;
+        this._likes = item.likes
+        
     };
 
     //Клонирование разметки template
@@ -25,11 +27,13 @@ class Card {
     generateCard() {
         this._element = this._getTemplate();
         this._cardImage = this._element.querySelector('.element__picture')
+        this._likeBox = this._element.querySelector('.element__content-like-number')
         this._setEventListeners();
 
         this._cardImage.src = this._link;
         this._element.querySelector('.element__content-title').textContent = this._name;
         this._cardImage.alt = this._name;
+        this._likeBox.textContent = this._likes.length;
         return this._element;
     };
 
@@ -37,6 +41,10 @@ class Card {
         evt.target.classList.toggle('element__content-button-like-picture_active')
     }
 
+    //Количество лайков 
+    // checkingNumberLikes() {
+    //     this._likeBox.textContent = this._like;
+    // };
     //Слушатели
     _setEventListeners() {
         //удаление карточки

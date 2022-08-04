@@ -14,20 +14,25 @@ import Section from '../components/Section .js';
 
 //Api запрос
 const api = new Api({
-    host: ' https://mesto.nomoreparties.co/v1/cohort-47',
+    host: 'https://mesto.nomoreparties.co/v1/cohort-47',
     headers: {
         authorization: '39dffeee-b595-4873-9b86-da022740c5b2',
         'Content-Type': 'application/json'
     }
 });
 
-//Одновременно выполнил promises синхронизации dataUser и инициализировал массив карточек на страницу
+//Api одновременно выполнил promises синхронизации dataUser и инициализировал массив карточек на страницу
 Promise.all([api.getUserInfo(), api.getCards()])
     .then(([dataUser, dataCards]) => {
         userInfo.setUserInfo(dataUser)
         defaultCards.renderItems(dataCards)
+        
+    });
+ 
+   
+            
+         
 
-    })
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -36,8 +41,9 @@ Promise.all([api.getUserInfo(), api.getCards()])
 const popupWithImage = new PopupWithImage('.popup_zoom-cards');
 popupWithImage.setEventListeners();
 
-// создание новой карточки
+// //Функция создание новой карточки
 function createCard(item) {
+    
     const card = new Card(item, config, {
         handleCardClick: () => {
             popupWithImage.open(item)
@@ -48,7 +54,7 @@ function createCard(item) {
     return cardElement
 };
 
-//Добавить исходный массив с карточками и подключаю к ним popup zoom    
+//Добавить массив из сервера с карточками и подключаю к ним popup zoom    
 const defaultCards = new Section({
     renderer: (item) => {
         //создал разметку
@@ -90,15 +96,19 @@ const popupWithFormProfile = new PopupWithForm(config, {
 }, '.popup-edit-profile')
 popupWithFormProfile.setEventListeners()
 
-///Добваляет новую карточку и подключаю к нией popup zoom
+//Добваляет новую карточку и подключаю к нией popup zoom
 const popupWithFormCard = new PopupWithForm(config, {
     handleProfileFormSubmit: (inputElements) => {
-        //создал разметку
-        createCard(inputElements)
-        //добавил на страницу
-        defaultCards.addItem(createCard(inputElements))
-        //закрыл popup
-        popupWithFormCard.close()
+        //Api загрузил на сервер
+        api.sendNewCard(inputElements)
+            .then((data) => {
+                createCard(data)
+                //добавил на страницу
+                defaultCards.addItem(createCard(data))
+                //закрыл popup
+                popupWithFormCard.close()
+            })
+
     }
 }, '.popup-add-a-card');
 popupWithFormCard.setEventListeners()

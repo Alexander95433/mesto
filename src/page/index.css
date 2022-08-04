@@ -65,3 +65,23 @@
 @import url(../blocks/popup/_zoom-cards/__close_zoom-cards/popup__close_zoom-cards.css);
 @import url(../blocks/popup/__picture-zoom-cards/popup__picture-zoom-cards.css);
 @import url(../blocks/popup/__subtitle-zoom-cards/popup__subtitle-zoom-cards.css);
+
+.element__content-like-number {
+    width: 10px;
+    height: 13px;
+    color: #000000;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+}
+
+.element__content-like-wrapper {
+display: flex;
+flex-direction: column;
+height: 35px;
+width: 22px;
+align-items: center;
+}
