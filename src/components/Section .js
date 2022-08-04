@@ -1,6 +1,5 @@
 export default class Section {
-    constructor({ data, renderer }, cardsContainer) {
-        this._items = data;
+    constructor({ renderer }, cardsContainer) {
         this._renderer = renderer;
         this._cardsContainer = document.querySelector(cardsContainer);
     };
@@ -11,8 +10,8 @@ export default class Section {
     };
     
     //создал новую карточку 
-    renderItems() {
-        this._items.forEach((item) => {
+    renderItems(items) {
+         items.forEach((item) => {
             this._renderer(item)
             
         });
