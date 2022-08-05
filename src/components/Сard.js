@@ -1,11 +1,14 @@
 class Card {
-    constructor(item, config, { handleCardClick }) {
+    constructor(item, config, userId, { handleCardClick }) {
         this._config = config;
         this._name = item.name;
         this._link = item.link;
         this._handleCardClick = handleCardClick;
         this._item = item;
-        this._likes = item.likes
+        this._likes = item.likes;
+        this._userId = userId;
+        this._cardOwnerId =item.owner._id;
+
         
     };
 
@@ -28,7 +31,10 @@ class Card {
         this._element = this._getTemplate();
         this._cardImage = this._element.querySelector('.element__picture')
         this._likeBox = this._element.querySelector('.element__content-like-number')
+        this._trashIcon = this._element.querySelector('.element__trash')
         this._setEventListeners();
+        this._checkTheCardholder()
+        
 
         this._cardImage.src = this._link;
         this._element.querySelector('.element__content-title').textContent = this._name;
@@ -40,15 +46,17 @@ class Card {
     _isCardLiked(evt) {
         evt.target.classList.toggle('element__content-button-like-picture_active')
     }
+    //проверить владельца карточки
+    _checkTheCardholder() {
+        if(this._userId !== this._cardOwnerId ) {
+            this._trashIcon.remove()
+        }
+    };
 
-    //Количество лайков 
-    // checkingNumberLikes() {
-    //     this._likeBox.textContent = this._like;
-    // };
     //Слушатели
     _setEventListeners() {
         //удаление карточки
-        this._element.querySelector(this._config.deleteIcon).addEventListener('click', this._deleteCard);
+         this._element.querySelector(this._config.deleteIcon).addEventListener('click', this._deleteCard);
         //открыть popup с увеличенным изображением
         this._element.querySelector(this._config.popupZoomCardsPictureWraper).addEventListener('click', () => this._handleCardClick(this._item));
         //like

@@ -20,18 +20,16 @@ const api = new Api({
         'Content-Type': 'application/json'
     }
 });
+let userId;
 
 //Api одновременно выполнил promises синхронизации dataUser и инициализировал массив карточек на страницу
 Promise.all([api.getUserInfo(), api.getCards()])
     .then(([dataUser, dataCards]) => {
+        userId = dataUser._id
         userInfo.setUserInfo(dataUser)
         defaultCards.renderItems(dataCards)
-        
-    });
- 
-   
-            
-         
+    })
+    //.catch(err => console.log(`Ошибка: ${err}`));
 
 
 
@@ -41,24 +39,19 @@ Promise.all([api.getUserInfo(), api.getCards()])
 const popupWithImage = new PopupWithImage('.popup_zoom-cards');
 popupWithImage.setEventListeners();
 
-// //Функция создание новой карточки
+//Функция создание новой карточки
 function createCard(item) {
-    
-    const card = new Card(item, config, {
-        handleCardClick: () => {
-            popupWithImage.open(item)
-        }
+    const card = new Card(item, config, userId, {
+        handleCardClick: () => { popupWithImage.open(item) }
     });
     //сгенерировал 
     const cardElement = card.generateCard();
     return cardElement
 };
 
-//Добавить массив из сервера с карточками и подключаю к ним popup zoom    
+//Разложить массив из сервера с карточками    
 const defaultCards = new Section({
     renderer: (item) => {
-        //создал разметку
-        createCard(item)
         //добавил на страницу
         defaultCards.addItem(createCard(item))
     }
@@ -96,13 +89,12 @@ const popupWithFormProfile = new PopupWithForm(config, {
 }, '.popup-edit-profile')
 popupWithFormProfile.setEventListeners()
 
-//Добваляет новую карточку и подключаю к нией popup zoom
+//Добваляет новую карточку 
 const popupWithFormCard = new PopupWithForm(config, {
     handleProfileFormSubmit: (inputElements) => {
         //Api загрузил на сервер
         api.sendNewCard(inputElements)
             .then((data) => {
-                createCard(data)
                 //добавил на страницу
                 defaultCards.addItem(createCard(data))
                 //закрыл popup
