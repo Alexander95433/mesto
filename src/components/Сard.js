@@ -1,15 +1,15 @@
 class Card {
-    constructor(item, config, userId, { handleCardClick }) {
+    constructor(item, config, userId, { handleCardClick, popupDeleteCardSubmit }) {
         this._config = config;
         this._name = item.name;
         this._link = item.link;
         this._handleCardClick = handleCardClick;
+        this._popupDeleteCardSubmit = popupDeleteCardSubmit;
+        this._cardId = item._id
         this._item = item;
         this._likes = item.likes;
         this._userId = userId;
-        this._cardOwnerId =item.owner._id;
-
-        
+        this._cardOwnerId = item.owner._id;
     };
 
     //Клонирование разметки template
@@ -22,8 +22,9 @@ class Card {
     };
 
     //функция удаления карточки
-    _deleteCard(event) {
-        event.target.closest('.element__card').remove();
+    deleteCard() {
+        this._element.remove();
+        //this._element = null;
     };
 
     //Заполнение карточки
@@ -34,7 +35,7 @@ class Card {
         this._trashIcon = this._element.querySelector('.element__trash')
         this._setEventListeners();
         this._checkTheCardholder()
-        
+
 
         this._cardImage.src = this._link;
         this._element.querySelector('.element__content-title').textContent = this._name;
@@ -43,20 +44,19 @@ class Card {
         return this._element;
     };
 
-    _isCardLiked(evt) {
-        evt.target.classList.toggle('element__content-button-like-picture_active')
-    }
+    _isCardLiked(evt) { evt.target.classList.toggle('element__content-button-like-picture_active') };
+
     //проверить владельца карточки
     _checkTheCardholder() {
-        if(this._userId !== this._cardOwnerId ) {
+        if (this._userId !== this._cardOwnerId) {
             this._trashIcon.remove()
         }
     };
 
     //Слушатели
     _setEventListeners() {
-        //удаление карточки
-         this._element.querySelector(this._config.deleteIcon).addEventListener('click', this._deleteCard);
+        //открывает слушатель кнопри submit
+        this._element.querySelector(this._config.deleteIcon).addEventListener('click', () => { this._popupDeleteCardSubmit(this._cardId) });
         //открыть popup с увеличенным изображением
         this._element.querySelector(this._config.popupZoomCardsPictureWraper).addEventListener('click', () => this._handleCardClick(this._item));
         //like

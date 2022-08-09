@@ -78,10 +78,20 @@
             </form>
         </div>
     </div>
+    <!-- popup delete-->
+    <div class="popup popup-delete-card">
+        <div class="popup__window">
+            <button class="popup__close popup__close-delete-card" type='submit'></button>
+            <h2 class="popup__title popup__title-delete-card">Вы уверены?</h2>
+            <button class="popup__form-button" type="submit">Да</button> 
+            
+        </div>
+    </div>
+
     <!--element__card template-->
     <template id="element-template">
         <article class="element__card">
-            <button class="element__trash" type="button" >
+            <button class="element__trash" type="button">
                 <img class="element__trash-picture" src="<%=require('./image/trash.svg')%>" alt="Удалить">
             </button>
             <div class="element__picture-wrapper">

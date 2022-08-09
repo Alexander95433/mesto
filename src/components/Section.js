@@ -4,11 +4,6 @@ export default class Section {
         this._cardsContainer = document.querySelector(cardsContainer);
     };
 
-    //Разложить массив карточек 
-    addItem(element) {
-        this._cardsContainer.prepend(element)
-    };
-
     //создал новую карточку 
     renderItems(items) {
         items.forEach((item) => {
@@ -16,5 +11,15 @@ export default class Section {
         });
 
     };
+
+    //Разложить массив карточек 
+    addItem(element) {
+        this._cardsContainer.append(element)
+    };
+
+    addItemNewCard(element) {
+        this._cardsContainer.prepend(element)
+    };
+
 };
 

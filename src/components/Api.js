@@ -1,4 +1,4 @@
-import { data } from "autoprefixer";
+//import { data } from "autoprefixer";
 
 export default class Api {
     constructor(options) {
@@ -58,7 +58,15 @@ export default class Api {
             .then(res => this._responseAnalysis(res))
     };
 
-   
+    //Удаление своей карточки с сервера
+    deleteCard(cardId) {
+        return fetch(`${this._host}/cards/${cardId}`, {
+            method: 'DELETE',
+            headers: this._headers
+        })
+            .then(res => this._responseAnalysis(res))
+    };
+
 
     ////////////////////////////////////////////
 };

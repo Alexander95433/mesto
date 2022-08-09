@@ -37,7 +37,6 @@ const config = {
     submitButtonSelector: '.popup__form-button',
     inputErrorClass: 'popup__form-input_error',
     errorClass: 'popup__span-input-error',
-    
 };
 
 
@@ -69,6 +68,6 @@ const initialCards = [
     }
 ];
 
-export { buttonPopupOn, popupEdit, popupFormEdit, formNameEdit, formDescriptionEdit, profileInfoName, profileInfoDescription, popupCard,
+export {buttonPopupOn, popupEdit, popupFormEdit, formNameEdit, formDescriptionEdit, profileInfoName, profileInfoDescription, popupCard,
     buttonCard, popupFormCard, popupFormNameCard, popupFormDescriptionCard, popupZoomCards, popupZoomCardsPicture, popupZoomCardsSubtitle,
     popups, cardsContainer, config, initialCards };
