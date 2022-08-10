@@ -83,7 +83,14 @@ export default class Api {
             headers: this._headers
         })
         .then(res => this._responseAnalysis(res))
-    }
+    };
+
+    //Обновление аватара пользователя
+    // avatarUpdate() {
+    //     return fetch()
+    // }
+
+
     ////////////////////////////////////////////
 };
 

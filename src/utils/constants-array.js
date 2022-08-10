@@ -4,6 +4,9 @@ const popupEdit = document.querySelector('.popup-edit-profile');
 const popupFormEdit = document.querySelector('.popup__form-edit-profile');
 const formNameEdit = popupFormEdit.querySelector('.popup__form-input_name-edit-profile');
 const formDescriptionEdit = popupFormEdit.querySelector('.popup__form-input_description-edit-profile');
+
+const formLinkUpdateAvatar = popupFormEdit.querySelector('.popup__form-input_update-avatar');
+
 //Заполнение профиля// 
 const profileInfoName = document.querySelector('.profile__info-name');
 const profileInfoDescription = document.querySelector('.profile__info-description');
@@ -78,4 +81,4 @@ const initialCards = [
 
 export {buttonPopupOn, popupEdit, popupFormEdit, formNameEdit, formDescriptionEdit, profileInfoName, profileInfoDescription, popupCard,
     buttonCard, popupFormCard, popupFormNameCard, popupFormDescriptionCard, popupZoomCards, popupZoomCardsPicture, popupZoomCardsSubtitle,
-    popups, cardsContainer, config, initialCards };
+    popups, cardsContainer, config, initialCards, formLinkUpdateAvatar };

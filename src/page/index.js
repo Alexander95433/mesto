@@ -1,6 +1,6 @@
 import './index.css';
 import {
-    buttonPopupOn, formNameEdit, formDescriptionEdit, buttonCard, config, initialCards
+    buttonPopupOn, formNameEdit, formDescriptionEdit, buttonCard, config, formLinkUpdateAvatar
 } from '../utils/constants-array';
 import Api from '../components/Api.js';
 import UserInfo from '../components/UserInfo.js';
@@ -98,7 +98,7 @@ const connectFormsToValidation = (config) => {
 };
 connectFormsToValidation(config);
 
-//заполняет поля информации о профиле
+//заполняет поля информации о профиле 
 const userInfo = new UserInfo({
     userName: '.profile__info-name',
     description: '.profile__info-description'
@@ -135,6 +135,9 @@ function openPopupCard() {
     formValidators['add-a-card'].resetFormValidation();
     popupWithFormCard.open();
 };
+
+//открыть popup update avatar
+
 
 //слушатели//
 buttonPopupOn.addEventListener('click', openPopupEdit);

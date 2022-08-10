@@ -21,13 +21,15 @@
 @import url(../blocks/profile/__info-button-picture/profile__info-button-picture.css);
 @import url(../blocks/profile/__picture-cross-box/profile__picture-cross-box.css);
 @import url(../blocks/profile/__picture-cross/profile__picture-cross.css);
+@import url(../blocks/profile/__avatar-container/profile__avatar-container.css);
 
 /*element*/
 @import url(../blocks/element/element.css);
 @import url(../blocks/element/__card/element__card.css);
 @import url(../blocks/element/__trash/element__trash.css);
 @import url(../blocks/element/__trash-picture/element__trash-picture.css);
-
+@import url(../blocks/element/__content-like-number/element__content-like-number.css);
+@import url(../blocks/element/__content-like-wrapper/element__content-like-wrapper.css);
 @import url(../blocks/element/__picture-wrapper/element__picture-wrapper.css);
 @import url(../blocks/element/__picture/element__picture.css);
 @import url(../blocks/element/__content/element__content.css);
@@ -66,22 +68,7 @@
 @import url(../blocks/popup/__picture-zoom-cards/popup__picture-zoom-cards.css);
 @import url(../blocks/popup/__subtitle-zoom-cards/popup__subtitle-zoom-cards.css);
 
-.element__content-like-number {
-    width: 10px;
-    height: 13px;
-    color: #000000;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 16px;
-    text-align: center;
-}
 
-.element__content-like-wrapper {
-display: flex;
-flex-direction: column;
-height: 35px;
-width: 22px;
-align-items: center;
-}
+
+ 
+ 
