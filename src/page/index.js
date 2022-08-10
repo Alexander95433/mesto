@@ -46,14 +46,25 @@ function createCard(item) {
             popupWithConfirmation.open()
             popupWithConfirmation.callbackDeleteCard(() => {
                 api.deleteCard(cardId)
-                    .then(() => card.deleteCard());
+                    .then(() => card.deleteCard())
+                    .catch(err => console.log(`Ошибка ${err}`))
             });
+        },
+        clickOnLike: (cardId) => {
+            api.putLike(cardId)
+                .then(data => card._changingStatusLikeButton(data))
+                .catch(err => console.log(`Ошибка ${err}`))
+        },
+        clickDeleteLike: (cardId) => {
+            api.removeLike(cardId)
+                .then(data => card._changingStatusLikeButton(data))
+                .catch(err => console.log(`Ошибка ${err}`))
         }
     });
     const cardElement = card.generateCard();
     return cardElement
 };
-//добавил слушателя с функциями для popup и кнопки submit popup delete card
+//добавил слушателя с функциями для popup и кнопки submit popup delete card  
 popupWithConfirmation.setEventListeners()
 
 //Разложить массив из сервера с карточками     

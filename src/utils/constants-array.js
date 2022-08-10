@@ -37,6 +37,14 @@ const config = {
     submitButtonSelector: '.popup__form-button',
     inputErrorClass: 'popup__form-input_error',
     errorClass: 'popup__span-input-error',
+
+    //likeButton: '.element__content-button-like',
+    likeButtonActive: 'element__content-button-like-picture_active',
+    picture: '.element__picture',
+    likeContainer: '.element__content-like-number',
+    trashButton: '.element__trash',
+    contentTitle: '.element__content-title',
+    cardBody: '.element__card',
 };
 
 

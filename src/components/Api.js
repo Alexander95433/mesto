@@ -67,7 +67,23 @@ export default class Api {
             .then(res => this._responseAnalysis(res))
     };
 
+    //Поставить like
+    putLike(cardId) {
+        return fetch(`${this._host}/cards/${cardId}/likes`, {
+            method:'PUT',
+            headers: this._headers
+        })
+        .then(res => this._responseAnalysis(res))
+    };
 
+    //убрать  like
+    removeLike(cardId) {
+        return fetch(`${this._host}/cards/${cardId}/likes`, {
+            method: 'DELETE',
+            headers: this._headers
+        })
+        .then(res => this._responseAnalysis(res))
+    }
     ////////////////////////////////////////////
 };
 
