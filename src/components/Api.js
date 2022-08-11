@@ -86,9 +86,16 @@ export default class Api {
     };
 
     //Обновление аватара пользователя
-    // avatarUpdate() {
-    //     return fetch()
-    // }
+    avatarUpdate(avatarId) { 
+        return fetch(`${this._host}/users/me/avatar`,{
+            method:'PATCH',
+            headers: this._headers,
+            body: JSON.stringify({
+                avatar: avatarId.link
+              })
+        })
+        .then(res => this._responseAnalysis(res))
+    }
 
 
     ////////////////////////////////////////////

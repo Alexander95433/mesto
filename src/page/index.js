@@ -1,7 +1,8 @@
 import './index.css';
 import {
-    buttonPopupOn, formNameEdit, formDescriptionEdit, buttonCard, config, formLinkUpdateAvatar
-} from '../utils/constants-array';
+    buttonPopupOn, formNameEdit, formDescriptionEdit, buttonCard, config,
+    avatarWrapper
+} from '../utils/constants-array.js';
 import Api from '../components/Api.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
@@ -13,6 +14,7 @@ import PopupWithConfirmation from '../components/PopupWithConfirmation.js';
 //Вынесенные переменные классов
 let userId;
 
+
 //Api запрос
 const api = new Api({
     host: 'https://mesto.nomoreparties.co/v1/cohort-47',
@@ -22,9 +24,11 @@ const api = new Api({
     },
 });
 
+
 //Api одновременно выполнил promises синхронизации dataUser и инициализировал массив карточек на страницу
 Promise.all([api.getUserInfo(), api.getCards()])
     .then(([dataUser, dataCards]) => {
+        userInfo.avatarLoading()
         userId = dataUser._id
         userInfo.setUserInfo(dataUser)
         section.renderItems(dataCards)
@@ -72,19 +76,6 @@ const section = new Section({
     renderer: (item) => { section.addItem(createCard(item)) }
 }, '.element');
 
-//Добваляет новую карточку 
-const popupWithFormCard = new PopupWithForm(config, {
-    handleProfileFormSubmit: (inputElements) => {
-        //Api загрузил на сервер
-        api.sendNewCard(inputElements)
-            .then((formdata) => {
-                section.addItemNewCard(createCard(formdata))
-                popupWithFormCard.close()
-            })
-    }
-}, '.popup-add-a-card');
-popupWithFormCard.setEventListeners()
-
 //Подключить к валидации универсальные формы
 const formValidators = {};
 const connectFormsToValidation = (config) => {
@@ -101,22 +92,60 @@ connectFormsToValidation(config);
 //заполняет поля информации о профиле 
 const userInfo = new UserInfo({
     userName: '.profile__info-name',
-    description: '.profile__info-description'
+    description: '.profile__info-description',
+    avatar: '.profile__avatar'
 });
+
+//Добваляет новую карточку 
+const popupWithFormCard = new PopupWithForm(config, {
+    handleProfileFormSubmit: (inputElements) => {
+        popupWithFormCard.loading(true)
+        //Api загрузил на сервер
+        api.sendNewCard(inputElements)
+            .then((formdata) => {
+                popupWithFormCard.loading(false)
+                section.addItemNewCard(createCard(formdata))
+                popupWithFormCard.close()
+            })
+    }
+}, '.popup-add-a-card');
+popupWithFormCard.setEventListeners()
 
 ///обработчик кнопки submit редактирования профиля
 const popupWithFormProfile = new PopupWithForm(config, {
     handleProfileFormSubmit: (inputElements) => {
+        popupWithFormProfile.loading(true)
         //Api загрузить иформацию из popup edit prufile на сервер
         api.sendUserInfo(inputElements)
             .then((data) => {
+                popupWithFormProfile.loading(false)
                 userInfo.setUserInfo(data);
                 popupWithFormProfile.close();
+
             })
     }
 }, '.popup-edit-profile')
 popupWithFormProfile.setEventListeners()
 
+// popup update avatar
+const updateAvatarPopupWithForm = new PopupWithForm(config, {
+    handleProfileFormSubmit: (inputElements) => {
+        updateAvatarPopupWithForm.loading(true)
+        //Api загрузить аватар
+        api.avatarUpdate(inputElements)
+            .then((data) => {
+                updateAvatarPopupWithForm.loading(false)
+                userInfo.setUserInfo(data);
+                updateAvatarPopupWithForm.close();
+            })
+    }
+}, '.popup-update-avatar')
+updateAvatarPopupWithForm.setEventListeners()
+
+//открыть popup update avatar
+function openPopupUpdateAvatar() {
+    updateAvatarPopupWithForm.open();
+};
 
 //открытие popup// 
 function openPopupEdit() {
@@ -136,9 +165,12 @@ function openPopupCard() {
     popupWithFormCard.open();
 };
 
-//открыть popup update avatar
+
 
 
 //слушатели//
 buttonPopupOn.addEventListener('click', openPopupEdit);
 buttonCard.addEventListener('click', openPopupCard);
+avatarWrapper.addEventListener('click', () => {
+    openPopupUpdateAvatar()
+})

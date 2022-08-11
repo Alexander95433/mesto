@@ -1,0 +1,19 @@
+.profile__avatar-loading {
+    position: absolute;
+    background-image: url(../../../image/2spin.jpg);
+    top: 29px;
+    left: 25px;
+    z-index: 5;
+    width: 70px;
+    height: 70px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    animation: spin 2s linear infinite;
+    z-index: 3;
+}
+
+@keyframes spin{
+    0% {transform: rotateZ(0deg);}
+    100% {transform: rotateZ(360deg);}
+  }
