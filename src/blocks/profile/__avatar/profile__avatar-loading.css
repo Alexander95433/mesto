@@ -3,14 +3,13 @@
     background-image: url(../../../image/2spin.jpg);
     top: 29px;
     left: 25px;
-    z-index: 5;
+    z-index: 3;
     width: 70px;
     height: 70px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
     animation: spin 2s linear infinite;
-    z-index: 3;
 }
 
 @keyframes spin{
