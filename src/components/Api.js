@@ -8,9 +8,7 @@ export default class Api {
 
     //Анализ ответа сервера
     _responseAnalysis(res) {
-        if (res.ok) {
-            return res.json();
-        }
+        if (res.ok) { return res.json(); }
         return Promise.reject(`Что-то пошло не так ${res.status}`)
     };
 
@@ -70,10 +68,10 @@ export default class Api {
     //Поставить like
     putLike(cardId) {
         return fetch(`${this._host}/cards/${cardId}/likes`, {
-            method:'PUT',
+            method: 'PUT',
             headers: this._headers
         })
-        .then(res => this._responseAnalysis(res))
+            .then(res => this._responseAnalysis(res))
     };
 
     //убрать  like
@@ -82,22 +80,19 @@ export default class Api {
             method: 'DELETE',
             headers: this._headers
         })
-        .then(res => this._responseAnalysis(res))
+            .then(res => this._responseAnalysis(res))
     };
 
     //Обновление аватара пользователя
-    avatarUpdate(avatarId) { 
-        return fetch(`${this._host}/users/me/avatar`,{
-            method:'PATCH',
+    avatarUpdate(avatarId) {
+        return fetch(`${this._host}/users/me/avatar`, {
+            method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
                 avatar: avatarId.link
-              })
+            })
         })
-        .then(res => this._responseAnalysis(res))
-    }
-
-
-    ////////////////////////////////////////////
+            .then(res => this._responseAnalysis(res))
+    };
 };
 

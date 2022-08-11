@@ -1,7 +1,6 @@
 import './index.css';
 import {
-    buttonPopupOn, formNameEdit, formDescriptionEdit, buttonCard, config,
-    avatarWrapper
+    buttonPopupOn, formNameEdit, formDescriptionEdit, buttonCard, config, avatarWrapper
 } from '../utils/constants-array.js';
 import Api from '../components/Api.js';
 import UserInfo from '../components/UserInfo.js';
@@ -11,9 +10,9 @@ import Card from '../components/Сard.js';
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import PopupWithConfirmation from '../components/PopupWithConfirmation.js';
+
 //Вынесенные переменные классов
 let userId;
-
 
 //Api запрос
 const api = new Api({
@@ -23,7 +22,6 @@ const api = new Api({
         'Content-Type': 'application/json'
     },
 });
-
 
 //Api одновременно выполнил promises синхронизации dataUser и инициализировал массив карточек на страницу
 Promise.all([api.getUserInfo(), api.getCards()])
@@ -107,6 +105,7 @@ const popupWithFormCard = new PopupWithForm(config, {
                 section.addItemNewCard(createCard(formdata))
                 popupWithFormCard.close()
             })
+            .catch(err => console.log(`Ошибка ${err}`))
     }
 }, '.popup-add-a-card');
 popupWithFormCard.setEventListeners()
@@ -121,8 +120,8 @@ const popupWithFormProfile = new PopupWithForm(config, {
                 popupWithFormProfile.loading(false)
                 userInfo.setUserInfo(data);
                 popupWithFormProfile.close();
-
             })
+            .catch(err => console.log(`Ошибка ${err}`))
     }
 }, '.popup-edit-profile')
 popupWithFormProfile.setEventListeners()
@@ -138,6 +137,7 @@ const updateAvatarPopupWithForm = new PopupWithForm(config, {
                 userInfo.setUserInfo(data);
                 updateAvatarPopupWithForm.close();
             })
+            .catch(err => console.log(`Ошибка ${err}`))
     }
 }, '.popup-update-avatar')
 updateAvatarPopupWithForm.setEventListeners()
@@ -165,12 +165,7 @@ function openPopupCard() {
     popupWithFormCard.open();
 };
 
-
-
-
 //слушатели//
 buttonPopupOn.addEventListener('click', openPopupEdit);
 buttonCard.addEventListener('click', openPopupCard);
-avatarWrapper.addEventListener('click', () => {
-    openPopupUpdateAvatar()
-})
+avatarWrapper.addEventListener('click', openPopupUpdateAvatar)
