@@ -31,7 +31,7 @@ Promise.all([api.getUserInfo(), api.getCards()])
         userInfo.setUserInfo(dataUser)
         section.renderItems(dataCards)
     })
-    .catch(err => console.log(`Ошибка: ${err}`));
+    .catch(err => console.log(`Ошибка: ${err}`)); 
 
 // класс удаления карточки
 const popupWithConfirmation = new PopupWithConfirmation('.popup-delete-card')
