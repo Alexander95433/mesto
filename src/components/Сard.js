@@ -60,7 +60,7 @@ class Card {
         }
     };
 
-    _changingStatusLikeButton(data) {
+    changingStatusLikeButton(data) {
         this._likes = data.likes
         this._like(this._likes.length)
         this._likeButton.classList.toggle(this._config.likeButtonActive)

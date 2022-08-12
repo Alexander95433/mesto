@@ -26,12 +26,12 @@ const api = new Api({
 //Api одновременно выполнил promises синхронизации dataUser и инициализировал массив карточек на страницу
 Promise.all([api.getUserInfo(), api.getCards()])
     .then(([dataUser, dataCards]) => {
-        userInfo.avatarLoading()
         userId = dataUser._id
         userInfo.setUserInfo(dataUser)
         section.renderItems(dataCards)
     })
-    .catch(err => console.log(`Ошибка: ${err}`)); 
+    .catch(err => console.log(`Ошибка: ${err}`))
+    .finally(() => userInfo.avatarLoading());
 
 // класс удаления карточки
 const popupWithConfirmation = new PopupWithConfirmation('.popup-delete-card')
@@ -54,12 +54,12 @@ function createCard(item) {
         },
         clickOnLike: (cardId) => {
             api.putLike(cardId)
-                .then(data => card._changingStatusLikeButton(data))
+                .then(data => card.changingStatusLikeButton(data))
                 .catch(err => console.log(`Ошибка ${err}`))
         },
         clickDeleteLike: (cardId) => {
             api.removeLike(cardId)
-                .then(data => card._changingStatusLikeButton(data))
+                .then(data => card.changingStatusLikeButton(data))
                 .catch(err => console.log(`Ошибка ${err}`))
         }
     });
@@ -101,11 +101,11 @@ const popupWithFormCard = new PopupWithForm(config, {
         //Api загрузил на сервер
         api.sendNewCard(inputElements)
             .then((formdata) => {
-                popupWithFormCard.loading(false)
                 section.addItemNewCard(createCard(formdata))
                 popupWithFormCard.close()
             })
             .catch(err => console.log(`Ошибка ${err}`))
+            .finally(() => updateAvatarPopupWithForm.loading(false))
     }
 }, '.popup-add-a-card');
 popupWithFormCard.setEventListeners()
@@ -117,11 +117,11 @@ const popupWithFormProfile = new PopupWithForm(config, {
         //Api загрузить иформацию из popup edit prufile на сервер
         api.sendUserInfo(inputElements)
             .then((data) => {
-                popupWithFormProfile.loading(false)
                 userInfo.setUserInfo(data);
                 popupWithFormProfile.close();
             })
             .catch(err => console.log(`Ошибка ${err}`))
+            .finally(() => updateAvatarPopupWithForm.loading(false))
     }
 }, '.popup-edit-profile')
 popupWithFormProfile.setEventListeners()
@@ -133,11 +133,11 @@ const updateAvatarPopupWithForm = new PopupWithForm(config, {
         //Api загрузить аватар
         api.avatarUpdate(inputElements)
             .then((data) => {
-                updateAvatarPopupWithForm.loading(false)
                 userInfo.setUserInfo(data);
                 updateAvatarPopupWithForm.close();
             })
             .catch(err => console.log(`Ошибка ${err}`))
+            .finally(() => updateAvatarPopupWithForm.loading(false))
     }
 }, '.popup-update-avatar')
 updateAvatarPopupWithForm.setEventListeners()
