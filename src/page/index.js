@@ -165,7 +165,7 @@ function openPopupCard() {
     popupWithFormCard.open();
 };
 
-//слушатели//
+//слушатели//  
 buttonPopupOn.addEventListener('click', openPopupEdit);
 buttonCard.addEventListener('click', openPopupCard);
 avatarWrapper.addEventListener('click', openPopupUpdateAvatar)
